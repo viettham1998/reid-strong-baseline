@@ -1,0 +1,1468 @@
+2022-04-22 13:55:00,891 reid_baseline INFO: Using 1 GPUS
+2022-04-22 13:55:00,891 reid_baseline INFO: Namespace(config_file='D:/hvtham/jupyter/reid-strong-baseline/configs/baseline.yml', opts=['MODEL.DEVICE_ID', "('1')", 'DATASETS.NAMES', "('market1501')", 'OUTPUT_DIR', "('logs/baseline/market')"])
+2022-04-22 13:55:00,891 reid_baseline INFO: Loaded configuration file D:/hvtham/jupyter/reid-strong-baseline/configs/baseline.yml
+2022-04-22 13:55:00,891 reid_baseline INFO: 
+MODEL:
+  PRETRAIN_CHOICE: 'imagenet'
+  PRETRAIN_PATH: 'D:/hvtham/jupyter/reid-strong-baseline/data/datasets/resnet50-0676ba61.pth'
+  LAST_STRIDE: 2
+  NECK: 'no'
+  METRIC_LOSS_TYPE: 'triplet'
+  IF_LABELSMOOTH: 'off'
+  IF_WITH_CENTER: 'no'
+
+
+INPUT:
+  SIZE_TRAIN: [256, 128]
+  SIZE_TEST: [256, 128]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.0 # random erasing
+  PADDING: 10
+
+DATASETS:
+  NAMES: ('market1501')
+
+DATALOADER:
+  SAMPLER: 'softmax_triplet'
+  NUM_INSTANCE: 4
+  NUM_WORKERS: 8
+
+SOLVER:
+  OPTIMIZER_NAME: 'Adam'
+  MAX_EPOCHS: 120
+  BASE_LR: 0.00035
+
+  CLUSTER_MARGIN: 0.3
+
+  CENTER_LR: 0.5
+  CENTER_LOSS_WEIGHT: 0.0005
+
+  RANGE_K: 2
+  RANGE_MARGIN: 0.3
+  RANGE_ALPHA: 0
+  RANGE_BETA: 1
+  RANGE_LOSS_WEIGHT: 1
+
+  BIAS_LR_FACTOR: 1
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+  IMS_PER_BATCH: 64
+
+  STEPS: [40, 70]
+  GAMMA: 0.1
+
+  WARMUP_FACTOR: 0.01
+  WARMUP_ITERS: 0
+  WARMUP_METHOD: 'linear'
+
+  CHECKPOINT_PERIOD: 40
+  LOG_PERIOD: 20
+  EVAL_PERIOD: 40
+
+TEST:
+  IMS_PER_BATCH: 128
+  RE_RANKING: 'no'
+  WEIGHT: "path"
+  NECK_FEAT: 'after'
+  FEAT_NORM: 'yes'
+
+OUTPUT_DIR: "D:/hvtham/jupyter/reid-strong-baseline/output/baseline/market"
+
+
+
+2022-04-22 13:55:00,891 reid_baseline INFO: Running with config:
+DATALOADER:
+  NUM_INSTANCE: 4
+  NUM_WORKERS: 8
+  SAMPLER: softmax_triplet
+DATASETS:
+  NAMES: market1501
+  ROOT_DIR: ./data
+INPUT:
+  PADDING: 10
+  PIXEL_MEAN: [0.485, 0.456, 0.406]
+  PIXEL_STD: [0.229, 0.224, 0.225]
+  PROB: 0.5
+  RE_PROB: 0.0
+  SIZE_TEST: [256, 128]
+  SIZE_TRAIN: [256, 128]
+MODEL:
+  DEVICE: cuda
+  DEVICE_ID: 6
+  IF_LABELSMOOTH: off
+  IF_WITH_CENTER: no
+  LAST_STRIDE: 2
+  METRIC_LOSS_TYPE: triplet
+  NAME: resnet50
+  NECK: no
+  PRETRAIN_CHOICE: imagenet
+  PRETRAIN_PATH: D:/hvtham/jupyter/reid-strong-baseline/data/datasets/resnet50-0676ba61.pth
+OUTPUT_DIR: logs/baseline/market
+SOLVER:
+  BASE_LR: 0.00035
+  BIAS_LR_FACTOR: 1
+  CENTER_LOSS_WEIGHT: 0.0005
+  CENTER_LR: 0.5
+  CHECKPOINT_PERIOD: 40
+  CLUSTER_MARGIN: 0.3
+  EVAL_PERIOD: 40
+  GAMMA: 0.1
+  IMS_PER_BATCH: 64
+  LOG_PERIOD: 20
+  MARGIN: 0.3
+  MAX_EPOCHS: 120
+  MOMENTUM: 0.9
+  OPTIMIZER_NAME: Adam
+  RANGE_ALPHA: 0
+  RANGE_BETA: 1
+  RANGE_K: 2
+  RANGE_LOSS_WEIGHT: 1
+  RANGE_MARGIN: 0.3
+  STEPS: (40, 70)
+  WARMUP_FACTOR: 0.01
+  WARMUP_ITERS: 0
+  WARMUP_METHOD: linear
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+TEST:
+  FEAT_NORM: yes
+  IMS_PER_BATCH: 128
+  NECK_FEAT: after
+  RE_RANKING: no
+  WEIGHT: path
+2022-04-22 13:55:01,876 reid_baseline.train INFO: Start training
+2022-04-22 13:55:11,067 reid_baseline.train INFO: Epoch[1] Iteration[20/184] Loss: 10.271, Acc: 0.000, Base Lr: 3.50e-04
+2022-04-22 13:55:14,619 reid_baseline.train INFO: Epoch[1] Iteration[40/184] Loss: 9.605, Acc: 0.001, Base Lr: 3.50e-04
+2022-04-22 13:55:18,206 reid_baseline.train INFO: Epoch[1] Iteration[60/184] Loss: 8.927, Acc: 0.003, Base Lr: 3.50e-04
+2022-04-22 13:55:21,759 reid_baseline.train INFO: Epoch[1] Iteration[80/184] Loss: 8.398, Acc: 0.002, Base Lr: 3.50e-04
+2022-04-22 13:55:25,319 reid_baseline.train INFO: Epoch[1] Iteration[100/184] Loss: 7.972, Acc: 0.001, Base Lr: 3.50e-04
+2022-04-22 13:55:28,896 reid_baseline.train INFO: Epoch[1] Iteration[120/184] Loss: 7.681, Acc: 0.001, Base Lr: 3.50e-04
+2022-04-22 13:55:32,458 reid_baseline.train INFO: Epoch[1] Iteration[140/184] Loss: 7.460, Acc: 0.001, Base Lr: 3.50e-04
+2022-04-22 13:55:36,022 reid_baseline.train INFO: Epoch[1] Iteration[160/184] Loss: 7.304, Acc: 0.003, Base Lr: 3.50e-04
+2022-04-22 13:55:39,591 reid_baseline.train INFO: Epoch[1] Iteration[180/184] Loss: 7.173, Acc: 0.007, Base Lr: 3.50e-04
+2022-04-22 13:55:40,464 reid_baseline.train INFO: Epoch 1 done. Time per batch: 33.558[s] Speed: 350.9[samples/s]
+2022-04-22 13:55:40,465 reid_baseline.train INFO: ----------
+2022-04-22 13:55:44,673 reid_baseline.train INFO: Epoch[2] Iteration[20/183] Loss: 6.919, Acc: 0.001, Base Lr: 3.50e-04
+2022-04-22 13:55:48,234 reid_baseline.train INFO: Epoch[2] Iteration[40/183] Loss: 6.916, Acc: 0.001, Base Lr: 3.50e-04
+2022-04-22 13:55:51,846 reid_baseline.train INFO: Epoch[2] Iteration[60/183] Loss: 6.907, Acc: 0.000, Base Lr: 3.50e-04
+2022-04-22 13:55:55,421 reid_baseline.train INFO: Epoch[2] Iteration[80/183] Loss: 6.900, Acc: 0.001, Base Lr: 3.50e-04
+2022-04-22 13:55:58,998 reid_baseline.train INFO: Epoch[2] Iteration[100/183] Loss: 6.874, Acc: 0.003, Base Lr: 3.50e-04
+2022-04-22 13:56:02,567 reid_baseline.train INFO: Epoch[2] Iteration[120/183] Loss: 6.840, Acc: 0.004, Base Lr: 3.50e-04
+2022-04-22 13:56:06,159 reid_baseline.train INFO: Epoch[2] Iteration[140/183] Loss: 6.777, Acc: 0.005, Base Lr: 3.50e-04
+2022-04-22 13:56:09,743 reid_baseline.train INFO: Epoch[2] Iteration[160/183] Loss: 6.709, Acc: 0.005, Base Lr: 3.50e-04
+2022-04-22 13:56:13,379 reid_baseline.train INFO: Epoch[2] Iteration[180/183] Loss: 6.384, Acc: 0.016, Base Lr: 3.50e-04
+2022-04-22 13:56:14,042 reid_baseline.train INFO: Epoch 2 done. Time per batch: 32.440[s] Speed: 361.0[samples/s]
+2022-04-22 13:56:14,042 reid_baseline.train INFO: ----------
+2022-04-22 13:56:18,231 reid_baseline.train INFO: Epoch[3] Iteration[20/183] Loss: 9.606, Acc: 0.047, Base Lr: 3.50e-04
+2022-04-22 13:56:21,825 reid_baseline.train INFO: Epoch[3] Iteration[40/183] Loss: 8.680, Acc: 0.036, Base Lr: 3.50e-04
+2022-04-22 13:56:25,420 reid_baseline.train INFO: Epoch[3] Iteration[60/183] Loss: 8.029, Acc: 0.028, Base Lr: 3.50e-04
+2022-04-22 13:56:29,007 reid_baseline.train INFO: Epoch[3] Iteration[80/183] Loss: 7.613, Acc: 0.026, Base Lr: 3.50e-04
+2022-04-22 13:56:32,618 reid_baseline.train INFO: Epoch[3] Iteration[100/183] Loss: 7.283, Acc: 0.024, Base Lr: 3.50e-04
+2022-04-22 13:56:36,209 reid_baseline.train INFO: Epoch[3] Iteration[120/183] Loss: 7.023, Acc: 0.029, Base Lr: 3.50e-04
+2022-04-22 13:56:39,793 reid_baseline.train INFO: Epoch[3] Iteration[140/183] Loss: 6.776, Acc: 0.037, Base Lr: 3.50e-04
+2022-04-22 13:56:43,373 reid_baseline.train INFO: Epoch[3] Iteration[160/183] Loss: 6.494, Acc: 0.055, Base Lr: 3.50e-04
+2022-04-22 13:56:46,978 reid_baseline.train INFO: Epoch[3] Iteration[180/183] Loss: 5.924, Acc: 0.097, Base Lr: 3.50e-04
+2022-04-22 13:56:47,634 reid_baseline.train INFO: Epoch 3 done. Time per batch: 32.472[s] Speed: 360.7[samples/s]
+2022-04-22 13:56:47,634 reid_baseline.train INFO: ----------
+2022-04-22 13:56:51,825 reid_baseline.train INFO: Epoch[4] Iteration[20/184] Loss: 9.116, Acc: 0.020, Base Lr: 3.50e-04
+2022-04-22 13:56:55,447 reid_baseline.train INFO: Epoch[4] Iteration[40/184] Loss: 8.299, Acc: 0.025, Base Lr: 3.50e-04
+2022-04-22 13:56:59,044 reid_baseline.train INFO: Epoch[4] Iteration[60/184] Loss: 7.639, Acc: 0.036, Base Lr: 3.50e-04
+2022-04-22 13:57:02,646 reid_baseline.train INFO: Epoch[4] Iteration[80/184] Loss: 7.137, Acc: 0.045, Base Lr: 3.50e-04
+2022-04-22 13:57:06,222 reid_baseline.train INFO: Epoch[4] Iteration[100/184] Loss: 6.663, Acc: 0.065, Base Lr: 3.50e-04
+2022-04-22 13:57:09,800 reid_baseline.train INFO: Epoch[4] Iteration[120/184] Loss: 6.254, Acc: 0.086, Base Lr: 3.50e-04
+2022-04-22 13:57:13,393 reid_baseline.train INFO: Epoch[4] Iteration[140/184] Loss: 5.859, Acc: 0.117, Base Lr: 3.50e-04
+2022-04-22 13:57:17,003 reid_baseline.train INFO: Epoch[4] Iteration[160/184] Loss: 5.383, Acc: 0.154, Base Lr: 3.50e-04
+2022-04-22 13:57:20,585 reid_baseline.train INFO: Epoch[4] Iteration[180/184] Loss: 4.688, Acc: 0.246, Base Lr: 3.50e-04
+2022-04-22 13:57:21,419 reid_baseline.train INFO: Epoch 4 done. Time per batch: 32.676[s] Speed: 360.4[samples/s]
+2022-04-22 13:57:21,420 reid_baseline.train INFO: ----------
+2022-04-22 13:57:25,617 reid_baseline.train INFO: Epoch[5] Iteration[20/183] Loss: 7.203, Acc: 0.121, Base Lr: 3.50e-04
+2022-04-22 13:57:29,225 reid_baseline.train INFO: Epoch[5] Iteration[40/183] Loss: 6.681, Acc: 0.122, Base Lr: 3.50e-04
+2022-04-22 13:57:32,829 reid_baseline.train INFO: Epoch[5] Iteration[60/183] Loss: 6.196, Acc: 0.131, Base Lr: 3.50e-04
+2022-04-22 13:57:36,446 reid_baseline.train INFO: Epoch[5] Iteration[80/183] Loss: 5.711, Acc: 0.162, Base Lr: 3.50e-04
+2022-04-22 13:57:40,054 reid_baseline.train INFO: Epoch[5] Iteration[100/183] Loss: 5.294, Acc: 0.173, Base Lr: 3.50e-04
+2022-04-22 13:57:43,665 reid_baseline.train INFO: Epoch[5] Iteration[120/183] Loss: 4.909, Acc: 0.213, Base Lr: 3.50e-04
+2022-04-22 13:57:47,266 reid_baseline.train INFO: Epoch[5] Iteration[140/183] Loss: 4.568, Acc: 0.240, Base Lr: 3.50e-04
+2022-04-22 13:57:50,839 reid_baseline.train INFO: Epoch[5] Iteration[160/183] Loss: 4.101, Acc: 0.290, Base Lr: 3.50e-04
+2022-04-22 13:57:54,408 reid_baseline.train INFO: Epoch[5] Iteration[180/183] Loss: 3.489, Acc: 0.392, Base Lr: 3.50e-04
+2022-04-22 13:57:55,063 reid_baseline.train INFO: Epoch 5 done. Time per batch: 32.530[s] Speed: 360.0[samples/s]
+2022-04-22 13:57:55,064 reid_baseline.train INFO: ----------
+2022-04-22 13:57:59,247 reid_baseline.train INFO: Epoch[6] Iteration[20/183] Loss: 6.385, Acc: 0.095, Base Lr: 3.50e-04
+2022-04-22 13:58:02,848 reid_baseline.train INFO: Epoch[6] Iteration[40/183] Loss: 5.769, Acc: 0.137, Base Lr: 3.50e-04
+2022-04-22 13:58:06,454 reid_baseline.train INFO: Epoch[6] Iteration[60/183] Loss: 5.163, Acc: 0.183, Base Lr: 3.50e-04
+2022-04-22 13:58:10,024 reid_baseline.train INFO: Epoch[6] Iteration[80/183] Loss: 4.722, Acc: 0.228, Base Lr: 3.50e-04
+2022-04-22 13:58:13,586 reid_baseline.train INFO: Epoch[6] Iteration[100/183] Loss: 4.306, Acc: 0.264, Base Lr: 3.50e-04
+2022-04-22 13:58:17,167 reid_baseline.train INFO: Epoch[6] Iteration[120/183] Loss: 3.896, Acc: 0.317, Base Lr: 3.50e-04
+2022-04-22 13:58:20,755 reid_baseline.train INFO: Epoch[6] Iteration[140/183] Loss: 3.574, Acc: 0.357, Base Lr: 3.50e-04
+2022-04-22 13:58:24,338 reid_baseline.train INFO: Epoch[6] Iteration[160/183] Loss: 3.163, Acc: 0.417, Base Lr: 3.50e-04
+2022-04-22 13:58:27,899 reid_baseline.train INFO: Epoch[6] Iteration[180/183] Loss: 2.710, Acc: 0.498, Base Lr: 3.50e-04
+2022-04-22 13:58:28,556 reid_baseline.train INFO: Epoch 6 done. Time per batch: 32.434[s] Speed: 361.1[samples/s]
+2022-04-22 13:58:28,557 reid_baseline.train INFO: ----------
+2022-04-22 13:58:32,765 reid_baseline.train INFO: Epoch[7] Iteration[20/183] Loss: 3.565, Acc: 0.377, Base Lr: 3.50e-04
+2022-04-22 13:58:36,343 reid_baseline.train INFO: Epoch[7] Iteration[40/183] Loss: 3.567, Acc: 0.354, Base Lr: 3.50e-04
+2022-04-22 13:58:39,931 reid_baseline.train INFO: Epoch[7] Iteration[60/183] Loss: 3.403, Acc: 0.369, Base Lr: 3.50e-04
+2022-04-22 13:58:43,528 reid_baseline.train INFO: Epoch[7] Iteration[80/183] Loss: 3.297, Acc: 0.388, Base Lr: 3.50e-04
+2022-04-22 13:58:47,108 reid_baseline.train INFO: Epoch[7] Iteration[100/183] Loss: 3.105, Acc: 0.410, Base Lr: 3.50e-04
+2022-04-22 13:58:50,726 reid_baseline.train INFO: Epoch[7] Iteration[120/183] Loss: 2.831, Acc: 0.452, Base Lr: 3.50e-04
+2022-04-22 13:58:54,307 reid_baseline.train INFO: Epoch[7] Iteration[140/183] Loss: 2.531, Acc: 0.492, Base Lr: 3.50e-04
+2022-04-22 13:58:57,894 reid_baseline.train INFO: Epoch[7] Iteration[160/183] Loss: 2.324, Acc: 0.524, Base Lr: 3.50e-04
+2022-04-22 13:59:01,472 reid_baseline.train INFO: Epoch[7] Iteration[180/183] Loss: 2.013, Acc: 0.597, Base Lr: 3.50e-04
+2022-04-22 13:59:02,140 reid_baseline.train INFO: Epoch 7 done. Time per batch: 32.456[s] Speed: 360.9[samples/s]
+2022-04-22 13:59:02,141 reid_baseline.train INFO: ----------
+2022-04-22 13:59:06,304 reid_baseline.train INFO: Epoch[8] Iteration[20/184] Loss: 3.013, Acc: 0.406, Base Lr: 3.50e-04
+2022-04-22 13:59:09,852 reid_baseline.train INFO: Epoch[8] Iteration[40/184] Loss: 2.920, Acc: 0.419, Base Lr: 3.50e-04
+2022-04-22 13:59:13,425 reid_baseline.train INFO: Epoch[8] Iteration[60/184] Loss: 2.894, Acc: 0.420, Base Lr: 3.50e-04
+2022-04-22 13:59:16,977 reid_baseline.train INFO: Epoch[8] Iteration[80/184] Loss: 2.735, Acc: 0.456, Base Lr: 3.50e-04
+2022-04-22 13:59:20,530 reid_baseline.train INFO: Epoch[8] Iteration[100/184] Loss: 2.538, Acc: 0.492, Base Lr: 3.50e-04
+2022-04-22 13:59:24,088 reid_baseline.train INFO: Epoch[8] Iteration[120/184] Loss: 2.414, Acc: 0.517, Base Lr: 3.50e-04
+2022-04-22 13:59:27,644 reid_baseline.train INFO: Epoch[8] Iteration[140/184] Loss: 2.192, Acc: 0.563, Base Lr: 3.50e-04
+2022-04-22 13:59:31,213 reid_baseline.train INFO: Epoch[8] Iteration[160/184] Loss: 1.906, Acc: 0.623, Base Lr: 3.50e-04
+2022-04-22 13:59:34,749 reid_baseline.train INFO: Epoch[8] Iteration[180/184] Loss: 1.633, Acc: 0.681, Base Lr: 3.50e-04
+2022-04-22 13:59:35,608 reid_baseline.train INFO: Epoch 8 done. Time per batch: 32.486[s] Speed: 362.5[samples/s]
+2022-04-22 13:59:35,608 reid_baseline.train INFO: ----------
+2022-04-22 13:59:39,774 reid_baseline.train INFO: Epoch[9] Iteration[20/183] Loss: 2.751, Acc: 0.335, Base Lr: 3.50e-04
+2022-04-22 13:59:43,348 reid_baseline.train INFO: Epoch[9] Iteration[40/183] Loss: 2.728, Acc: 0.376, Base Lr: 3.50e-04
+2022-04-22 13:59:46,933 reid_baseline.train INFO: Epoch[9] Iteration[60/183] Loss: 2.591, Acc: 0.435, Base Lr: 3.50e-04
+2022-04-22 13:59:50,530 reid_baseline.train INFO: Epoch[9] Iteration[80/183] Loss: 2.402, Acc: 0.479, Base Lr: 3.50e-04
+2022-04-22 13:59:54,083 reid_baseline.train INFO: Epoch[9] Iteration[100/183] Loss: 2.151, Acc: 0.530, Base Lr: 3.50e-04
+2022-04-22 13:59:57,659 reid_baseline.train INFO: Epoch[9] Iteration[120/183] Loss: 2.007, Acc: 0.558, Base Lr: 3.50e-04
+2022-04-22 14:00:01,230 reid_baseline.train INFO: Epoch[9] Iteration[140/183] Loss: 1.803, Acc: 0.610, Base Lr: 3.50e-04
+2022-04-22 14:00:04,822 reid_baseline.train INFO: Epoch[9] Iteration[160/183] Loss: 1.590, Acc: 0.661, Base Lr: 3.50e-04
+2022-04-22 14:00:08,383 reid_baseline.train INFO: Epoch[9] Iteration[180/183] Loss: 1.300, Acc: 0.734, Base Lr: 3.50e-04
+2022-04-22 14:00:09,027 reid_baseline.train INFO: Epoch 9 done. Time per batch: 32.425[s] Speed: 361.2[samples/s]
+2022-04-22 14:00:09,027 reid_baseline.train INFO: ----------
+2022-04-22 14:00:13,242 reid_baseline.train INFO: Epoch[10] Iteration[20/183] Loss: 2.931, Acc: 0.288, Base Lr: 3.50e-04
+2022-04-22 14:00:16,812 reid_baseline.train INFO: Epoch[10] Iteration[40/183] Loss: 2.586, Acc: 0.383, Base Lr: 3.50e-04
+2022-04-22 14:00:20,394 reid_baseline.train INFO: Epoch[10] Iteration[60/183] Loss: 2.346, Acc: 0.447, Base Lr: 3.50e-04
+2022-04-22 14:00:23,938 reid_baseline.train INFO: Epoch[10] Iteration[80/183] Loss: 2.091, Acc: 0.517, Base Lr: 3.50e-04
+2022-04-22 14:00:27,492 reid_baseline.train INFO: Epoch[10] Iteration[100/183] Loss: 1.904, Acc: 0.569, Base Lr: 3.50e-04
+2022-04-22 14:00:31,099 reid_baseline.train INFO: Epoch[10] Iteration[120/183] Loss: 1.751, Acc: 0.615, Base Lr: 3.50e-04
+2022-04-22 14:00:34,661 reid_baseline.train INFO: Epoch[10] Iteration[140/183] Loss: 1.536, Acc: 0.665, Base Lr: 3.50e-04
+2022-04-22 14:00:38,240 reid_baseline.train INFO: Epoch[10] Iteration[160/183] Loss: 1.345, Acc: 0.708, Base Lr: 3.50e-04
+2022-04-22 14:00:41,799 reid_baseline.train INFO: Epoch[10] Iteration[180/183] Loss: 1.122, Acc: 0.766, Base Lr: 3.50e-04
+2022-04-22 14:00:42,448 reid_baseline.train INFO: Epoch 10 done. Time per batch: 32.410[s] Speed: 361.4[samples/s]
+2022-04-22 14:00:42,449 reid_baseline.train INFO: ----------
+2022-04-22 14:00:46,688 reid_baseline.train INFO: Epoch[11] Iteration[20/183] Loss: 2.638, Acc: 0.456, Base Lr: 3.50e-04
+2022-04-22 14:00:50,255 reid_baseline.train INFO: Epoch[11] Iteration[40/183] Loss: 2.295, Acc: 0.525, Base Lr: 3.50e-04
+2022-04-22 14:00:53,823 reid_baseline.train INFO: Epoch[11] Iteration[60/183] Loss: 2.045, Acc: 0.581, Base Lr: 3.50e-04
+2022-04-22 14:00:57,420 reid_baseline.train INFO: Epoch[11] Iteration[80/183] Loss: 1.835, Acc: 0.619, Base Lr: 3.50e-04
+2022-04-22 14:01:00,977 reid_baseline.train INFO: Epoch[11] Iteration[100/183] Loss: 1.647, Acc: 0.660, Base Lr: 3.50e-04
+2022-04-22 14:01:04,528 reid_baseline.train INFO: Epoch[11] Iteration[120/183] Loss: 1.527, Acc: 0.678, Base Lr: 3.50e-04
+2022-04-22 14:01:08,088 reid_baseline.train INFO: Epoch[11] Iteration[140/183] Loss: 1.363, Acc: 0.709, Base Lr: 3.50e-04
+2022-04-22 14:01:11,662 reid_baseline.train INFO: Epoch[11] Iteration[160/183] Loss: 1.176, Acc: 0.744, Base Lr: 3.50e-04
+2022-04-22 14:01:15,222 reid_baseline.train INFO: Epoch[11] Iteration[180/183] Loss: 0.953, Acc: 0.799, Base Lr: 3.50e-04
+2022-04-22 14:01:15,893 reid_baseline.train INFO: Epoch 11 done. Time per batch: 32.399[s] Speed: 361.5[samples/s]
+2022-04-22 14:01:15,893 reid_baseline.train INFO: ----------
+2022-04-22 14:01:20,057 reid_baseline.train INFO: Epoch[12] Iteration[20/183] Loss: 2.262, Acc: 0.610, Base Lr: 3.50e-04
+2022-04-22 14:01:23,620 reid_baseline.train INFO: Epoch[12] Iteration[40/183] Loss: 1.995, Acc: 0.629, Base Lr: 3.50e-04
+2022-04-22 14:01:27,206 reid_baseline.train INFO: Epoch[12] Iteration[60/183] Loss: 1.793, Acc: 0.651, Base Lr: 3.50e-04
+2022-04-22 14:01:30,759 reid_baseline.train INFO: Epoch[12] Iteration[80/183] Loss: 1.618, Acc: 0.668, Base Lr: 3.50e-04
+2022-04-22 14:01:34,307 reid_baseline.train INFO: Epoch[12] Iteration[100/183] Loss: 1.484, Acc: 0.699, Base Lr: 3.50e-04
+2022-04-22 14:01:37,888 reid_baseline.train INFO: Epoch[12] Iteration[120/183] Loss: 1.332, Acc: 0.725, Base Lr: 3.50e-04
+2022-04-22 14:01:41,464 reid_baseline.train INFO: Epoch[12] Iteration[140/183] Loss: 1.187, Acc: 0.756, Base Lr: 3.50e-04
+2022-04-22 14:01:45,056 reid_baseline.train INFO: Epoch[12] Iteration[160/183] Loss: 1.075, Acc: 0.775, Base Lr: 3.50e-04
+2022-04-22 14:01:48,612 reid_baseline.train INFO: Epoch[12] Iteration[180/183] Loss: 0.933, Acc: 0.807, Base Lr: 3.50e-04
+2022-04-22 14:01:49,260 reid_baseline.train INFO: Epoch 12 done. Time per batch: 32.365[s] Speed: 361.9[samples/s]
+2022-04-22 14:01:49,260 reid_baseline.train INFO: ----------
+2022-04-22 14:01:53,532 reid_baseline.train INFO: Epoch[13] Iteration[20/183] Loss: 1.749, Acc: 0.558, Base Lr: 3.50e-04
+2022-04-22 14:01:57,087 reid_baseline.train INFO: Epoch[13] Iteration[40/183] Loss: 1.606, Acc: 0.609, Base Lr: 3.50e-04
+2022-04-22 14:02:00,690 reid_baseline.train INFO: Epoch[13] Iteration[60/183] Loss: 1.499, Acc: 0.643, Base Lr: 3.50e-04
+2022-04-22 14:02:04,236 reid_baseline.train INFO: Epoch[13] Iteration[80/183] Loss: 1.426, Acc: 0.669, Base Lr: 3.50e-04
+2022-04-22 14:02:07,797 reid_baseline.train INFO: Epoch[13] Iteration[100/183] Loss: 1.308, Acc: 0.703, Base Lr: 3.50e-04
+2022-04-22 14:02:11,375 reid_baseline.train INFO: Epoch[13] Iteration[120/183] Loss: 1.150, Acc: 0.734, Base Lr: 3.50e-04
+2022-04-22 14:02:14,909 reid_baseline.train INFO: Epoch[13] Iteration[140/183] Loss: 1.028, Acc: 0.772, Base Lr: 3.50e-04
+2022-04-22 14:02:18,483 reid_baseline.train INFO: Epoch[13] Iteration[160/183] Loss: 0.874, Acc: 0.809, Base Lr: 3.50e-04
+2022-04-22 14:02:22,030 reid_baseline.train INFO: Epoch[13] Iteration[180/183] Loss: 0.722, Acc: 0.849, Base Lr: 3.50e-04
+2022-04-22 14:02:22,692 reid_baseline.train INFO: Epoch 13 done. Time per batch: 32.417[s] Speed: 361.3[samples/s]
+2022-04-22 14:02:22,693 reid_baseline.train INFO: ----------
+2022-04-22 14:02:26,893 reid_baseline.train INFO: Epoch[14] Iteration[20/183] Loss: 1.281, Acc: 0.676, Base Lr: 3.50e-04
+2022-04-22 14:02:30,496 reid_baseline.train INFO: Epoch[14] Iteration[40/183] Loss: 1.259, Acc: 0.684, Base Lr: 3.50e-04
+2022-04-22 14:02:34,088 reid_baseline.train INFO: Epoch[14] Iteration[60/183] Loss: 1.271, Acc: 0.705, Base Lr: 3.50e-04
+2022-04-22 14:02:37,662 reid_baseline.train INFO: Epoch[14] Iteration[80/183] Loss: 1.152, Acc: 0.734, Base Lr: 3.50e-04
+2022-04-22 14:02:41,223 reid_baseline.train INFO: Epoch[14] Iteration[100/183] Loss: 1.058, Acc: 0.759, Base Lr: 3.50e-04
+2022-04-22 14:02:44,813 reid_baseline.train INFO: Epoch[14] Iteration[120/183] Loss: 0.980, Acc: 0.781, Base Lr: 3.50e-04
+2022-04-22 14:02:48,379 reid_baseline.train INFO: Epoch[14] Iteration[140/183] Loss: 0.881, Acc: 0.812, Base Lr: 3.50e-04
+2022-04-22 14:02:51,946 reid_baseline.train INFO: Epoch[14] Iteration[160/183] Loss: 0.771, Acc: 0.834, Base Lr: 3.50e-04
+2022-04-22 14:02:55,518 reid_baseline.train INFO: Epoch[14] Iteration[180/183] Loss: 0.671, Acc: 0.862, Base Lr: 3.50e-04
+2022-04-22 14:02:56,202 reid_baseline.train INFO: Epoch 14 done. Time per batch: 32.346[s] Speed: 362.1[samples/s]
+2022-04-22 14:02:56,203 reid_baseline.train INFO: ----------
+2022-04-22 14:03:00,391 reid_baseline.train INFO: Epoch[15] Iteration[20/183] Loss: 1.488, Acc: 0.641, Base Lr: 3.50e-04
+2022-04-22 14:03:03,966 reid_baseline.train INFO: Epoch[15] Iteration[40/183] Loss: 1.397, Acc: 0.663, Base Lr: 3.50e-04
+2022-04-22 14:03:07,577 reid_baseline.train INFO: Epoch[15] Iteration[60/183] Loss: 1.256, Acc: 0.704, Base Lr: 3.50e-04
+2022-04-22 14:03:11,149 reid_baseline.train INFO: Epoch[15] Iteration[80/183] Loss: 1.111, Acc: 0.743, Base Lr: 3.50e-04
+2022-04-22 14:03:14,731 reid_baseline.train INFO: Epoch[15] Iteration[100/183] Loss: 0.978, Acc: 0.779, Base Lr: 3.50e-04
+2022-04-22 14:03:18,315 reid_baseline.train INFO: Epoch[15] Iteration[120/183] Loss: 0.885, Acc: 0.804, Base Lr: 3.50e-04
+2022-04-22 14:03:21,905 reid_baseline.train INFO: Epoch[15] Iteration[140/183] Loss: 0.827, Acc: 0.821, Base Lr: 3.50e-04
+2022-04-22 14:03:25,487 reid_baseline.train INFO: Epoch[15] Iteration[160/183] Loss: 0.729, Acc: 0.840, Base Lr: 3.50e-04
+2022-04-22 14:03:29,056 reid_baseline.train INFO: Epoch[15] Iteration[180/183] Loss: 0.621, Acc: 0.867, Base Lr: 3.50e-04
+2022-04-22 14:03:29,707 reid_baseline.train INFO: Epoch 15 done. Time per batch: 32.438[s] Speed: 361.1[samples/s]
+2022-04-22 14:03:29,708 reid_baseline.train INFO: ----------
+2022-04-22 14:03:33,884 reid_baseline.train INFO: Epoch[16] Iteration[20/183] Loss: 1.379, Acc: 0.647, Base Lr: 3.50e-04
+2022-04-22 14:03:37,477 reid_baseline.train INFO: Epoch[16] Iteration[40/183] Loss: 1.276, Acc: 0.684, Base Lr: 3.50e-04
+2022-04-22 14:03:41,051 reid_baseline.train INFO: Epoch[16] Iteration[60/183] Loss: 1.175, Acc: 0.716, Base Lr: 3.50e-04
+2022-04-22 14:03:44,633 reid_baseline.train INFO: Epoch[16] Iteration[80/183] Loss: 1.073, Acc: 0.739, Base Lr: 3.50e-04
+2022-04-22 14:03:48,207 reid_baseline.train INFO: Epoch[16] Iteration[100/183] Loss: 0.997, Acc: 0.758, Base Lr: 3.50e-04
+2022-04-22 14:03:51,779 reid_baseline.train INFO: Epoch[16] Iteration[120/183] Loss: 0.879, Acc: 0.796, Base Lr: 3.50e-04
+2022-04-22 14:03:55,347 reid_baseline.train INFO: Epoch[16] Iteration[140/183] Loss: 0.794, Acc: 0.825, Base Lr: 3.50e-04
+2022-04-22 14:03:58,958 reid_baseline.train INFO: Epoch[16] Iteration[160/183] Loss: 0.701, Acc: 0.848, Base Lr: 3.50e-04
+2022-04-22 14:04:02,513 reid_baseline.train INFO: Epoch[16] Iteration[180/183] Loss: 0.577, Acc: 0.881, Base Lr: 3.50e-04
+2022-04-22 14:04:03,178 reid_baseline.train INFO: Epoch 16 done. Time per batch: 32.376[s] Speed: 361.7[samples/s]
+2022-04-22 14:04:03,179 reid_baseline.train INFO: ----------
+2022-04-22 14:04:07,432 reid_baseline.train INFO: Epoch[17] Iteration[20/183] Loss: 0.871, Acc: 0.738, Base Lr: 3.50e-04
+2022-04-22 14:04:11,025 reid_baseline.train INFO: Epoch[17] Iteration[40/183] Loss: 0.896, Acc: 0.757, Base Lr: 3.50e-04
+2022-04-22 14:04:14,636 reid_baseline.train INFO: Epoch[17] Iteration[60/183] Loss: 0.879, Acc: 0.778, Base Lr: 3.50e-04
+2022-04-22 14:04:18,227 reid_baseline.train INFO: Epoch[17] Iteration[80/183] Loss: 0.880, Acc: 0.786, Base Lr: 3.50e-04
+2022-04-22 14:04:21,828 reid_baseline.train INFO: Epoch[17] Iteration[100/183] Loss: 0.815, Acc: 0.804, Base Lr: 3.50e-04
+2022-04-22 14:04:25,389 reid_baseline.train INFO: Epoch[17] Iteration[120/183] Loss: 0.763, Acc: 0.825, Base Lr: 3.50e-04
+2022-04-22 14:04:28,974 reid_baseline.train INFO: Epoch[17] Iteration[140/183] Loss: 0.709, Acc: 0.841, Base Lr: 3.50e-04
+2022-04-22 14:04:32,530 reid_baseline.train INFO: Epoch[17] Iteration[160/183] Loss: 0.636, Acc: 0.864, Base Lr: 3.50e-04
+2022-04-22 14:04:36,094 reid_baseline.train INFO: Epoch[17] Iteration[180/183] Loss: 0.557, Acc: 0.888, Base Lr: 3.50e-04
+2022-04-22 14:04:36,726 reid_baseline.train INFO: Epoch 17 done. Time per batch: 32.508[s] Speed: 360.3[samples/s]
+2022-04-22 14:04:36,726 reid_baseline.train INFO: ----------
+2022-04-22 14:04:40,940 reid_baseline.train INFO: Epoch[18] Iteration[20/183] Loss: 1.081, Acc: 0.712, Base Lr: 3.50e-04
+2022-04-22 14:04:44,519 reid_baseline.train INFO: Epoch[18] Iteration[40/183] Loss: 1.039, Acc: 0.737, Base Lr: 3.50e-04
+2022-04-22 14:04:48,108 reid_baseline.train INFO: Epoch[18] Iteration[60/183] Loss: 0.965, Acc: 0.768, Base Lr: 3.50e-04
+2022-04-22 14:04:51,662 reid_baseline.train INFO: Epoch[18] Iteration[80/183] Loss: 0.908, Acc: 0.790, Base Lr: 3.50e-04
+2022-04-22 14:04:55,233 reid_baseline.train INFO: Epoch[18] Iteration[100/183] Loss: 0.790, Acc: 0.820, Base Lr: 3.50e-04
+2022-04-22 14:04:58,809 reid_baseline.train INFO: Epoch[18] Iteration[120/183] Loss: 0.721, Acc: 0.831, Base Lr: 3.50e-04
+2022-04-22 14:05:02,376 reid_baseline.train INFO: Epoch[18] Iteration[140/183] Loss: 0.662, Acc: 0.847, Base Lr: 3.50e-04
+2022-04-22 14:05:05,938 reid_baseline.train INFO: Epoch[18] Iteration[160/183] Loss: 0.569, Acc: 0.872, Base Lr: 3.50e-04
+2022-04-22 14:05:09,482 reid_baseline.train INFO: Epoch[18] Iteration[180/183] Loss: 0.478, Acc: 0.897, Base Lr: 3.50e-04
+2022-04-22 14:05:10,139 reid_baseline.train INFO: Epoch 18 done. Time per batch: 32.389[s] Speed: 361.6[samples/s]
+2022-04-22 14:05:10,139 reid_baseline.train INFO: ----------
+2022-04-22 14:05:14,305 reid_baseline.train INFO: Epoch[19] Iteration[20/184] Loss: 1.060, Acc: 0.748, Base Lr: 3.50e-04
+2022-04-22 14:05:17,899 reid_baseline.train INFO: Epoch[19] Iteration[40/184] Loss: 0.957, Acc: 0.778, Base Lr: 3.50e-04
+2022-04-22 14:05:21,492 reid_baseline.train INFO: Epoch[19] Iteration[60/184] Loss: 0.913, Acc: 0.789, Base Lr: 3.50e-04
+2022-04-22 14:05:25,063 reid_baseline.train INFO: Epoch[19] Iteration[80/184] Loss: 0.850, Acc: 0.806, Base Lr: 3.50e-04
+2022-04-22 14:05:28,639 reid_baseline.train INFO: Epoch[19] Iteration[100/184] Loss: 0.787, Acc: 0.826, Base Lr: 3.50e-04
+2022-04-22 14:05:32,187 reid_baseline.train INFO: Epoch[19] Iteration[120/184] Loss: 0.772, Acc: 0.829, Base Lr: 3.50e-04
+2022-04-22 14:05:35,771 reid_baseline.train INFO: Epoch[19] Iteration[140/184] Loss: 0.684, Acc: 0.853, Base Lr: 3.50e-04
+2022-04-22 14:05:39,326 reid_baseline.train INFO: Epoch[19] Iteration[160/184] Loss: 0.611, Acc: 0.876, Base Lr: 3.50e-04
+2022-04-22 14:05:42,874 reid_baseline.train INFO: Epoch[19] Iteration[180/184] Loss: 0.508, Acc: 0.904, Base Lr: 3.50e-04
+2022-04-22 14:05:43,708 reid_baseline.train INFO: Epoch 19 done. Time per batch: 32.553[s] Speed: 361.7[samples/s]
+2022-04-22 14:05:43,708 reid_baseline.train INFO: ----------
+2022-04-22 14:05:47,934 reid_baseline.train INFO: Epoch[20] Iteration[20/184] Loss: 0.773, Acc: 0.808, Base Lr: 3.50e-04
+2022-04-22 14:05:51,544 reid_baseline.train INFO: Epoch[20] Iteration[40/184] Loss: 0.765, Acc: 0.818, Base Lr: 3.50e-04
+2022-04-22 14:05:55,175 reid_baseline.train INFO: Epoch[20] Iteration[60/184] Loss: 0.765, Acc: 0.823, Base Lr: 3.50e-04
+2022-04-22 14:05:58,798 reid_baseline.train INFO: Epoch[20] Iteration[80/184] Loss: 0.765, Acc: 0.825, Base Lr: 3.50e-04
+2022-04-22 14:06:02,368 reid_baseline.train INFO: Epoch[20] Iteration[100/184] Loss: 0.714, Acc: 0.836, Base Lr: 3.50e-04
+2022-04-22 14:06:05,979 reid_baseline.train INFO: Epoch[20] Iteration[120/184] Loss: 0.672, Acc: 0.854, Base Lr: 3.50e-04
+2022-04-22 14:06:09,565 reid_baseline.train INFO: Epoch[20] Iteration[140/184] Loss: 0.654, Acc: 0.862, Base Lr: 3.50e-04
+2022-04-22 14:06:13,123 reid_baseline.train INFO: Epoch[20] Iteration[160/184] Loss: 0.623, Acc: 0.875, Base Lr: 3.50e-04
+2022-04-22 14:06:16,703 reid_baseline.train INFO: Epoch[20] Iteration[180/184] Loss: 0.538, Acc: 0.899, Base Lr: 3.50e-04
+2022-04-22 14:06:17,539 reid_baseline.train INFO: Epoch 20 done. Time per batch: 32.682[s] Speed: 360.3[samples/s]
+2022-04-22 14:06:17,540 reid_baseline.train INFO: ----------
+2022-04-22 14:06:21,813 reid_baseline.train INFO: Epoch[21] Iteration[20/184] Loss: 0.910, Acc: 0.788, Base Lr: 3.50e-04
+2022-04-22 14:06:25,416 reid_baseline.train INFO: Epoch[21] Iteration[40/184] Loss: 0.888, Acc: 0.791, Base Lr: 3.50e-04
+2022-04-22 14:06:28,993 reid_baseline.train INFO: Epoch[21] Iteration[60/184] Loss: 0.843, Acc: 0.808, Base Lr: 3.50e-04
+2022-04-22 14:06:32,621 reid_baseline.train INFO: Epoch[21] Iteration[80/184] Loss: 0.804, Acc: 0.818, Base Lr: 3.50e-04
+2022-04-22 14:06:36,205 reid_baseline.train INFO: Epoch[21] Iteration[100/184] Loss: 0.746, Acc: 0.835, Base Lr: 3.50e-04
+2022-04-22 14:06:39,775 reid_baseline.train INFO: Epoch[21] Iteration[120/184] Loss: 0.673, Acc: 0.852, Base Lr: 3.50e-04
+2022-04-22 14:06:43,360 reid_baseline.train INFO: Epoch[21] Iteration[140/184] Loss: 0.615, Acc: 0.866, Base Lr: 3.50e-04
+2022-04-22 14:06:46,974 reid_baseline.train INFO: Epoch[21] Iteration[160/184] Loss: 0.534, Acc: 0.888, Base Lr: 3.50e-04
+2022-04-22 14:06:50,586 reid_baseline.train INFO: Epoch[21] Iteration[180/184] Loss: 0.431, Acc: 0.914, Base Lr: 3.50e-04
+2022-04-22 14:06:51,425 reid_baseline.train INFO: Epoch 21 done. Time per batch: 32.723[s] Speed: 359.9[samples/s]
+2022-04-22 14:06:51,425 reid_baseline.train INFO: ----------
+2022-04-22 14:06:55,652 reid_baseline.train INFO: Epoch[22] Iteration[20/184] Loss: 1.140, Acc: 0.729, Base Lr: 3.50e-04
+2022-04-22 14:06:59,259 reid_baseline.train INFO: Epoch[22] Iteration[40/184] Loss: 0.979, Acc: 0.772, Base Lr: 3.50e-04
+2022-04-22 14:07:02,821 reid_baseline.train INFO: Epoch[22] Iteration[60/184] Loss: 0.836, Acc: 0.808, Base Lr: 3.50e-04
+2022-04-22 14:07:06,400 reid_baseline.train INFO: Epoch[22] Iteration[80/184] Loss: 0.734, Acc: 0.839, Base Lr: 3.50e-04
+2022-04-22 14:07:09,969 reid_baseline.train INFO: Epoch[22] Iteration[100/184] Loss: 0.677, Acc: 0.851, Base Lr: 3.50e-04
+2022-04-22 14:07:13,571 reid_baseline.train INFO: Epoch[22] Iteration[120/184] Loss: 0.629, Acc: 0.863, Base Lr: 3.50e-04
+2022-04-22 14:07:17,152 reid_baseline.train INFO: Epoch[22] Iteration[140/184] Loss: 0.587, Acc: 0.875, Base Lr: 3.50e-04
+2022-04-22 14:07:20,709 reid_baseline.train INFO: Epoch[22] Iteration[160/184] Loss: 0.537, Acc: 0.888, Base Lr: 3.50e-04
+2022-04-22 14:07:24,302 reid_baseline.train INFO: Epoch[22] Iteration[180/184] Loss: 0.450, Acc: 0.911, Base Lr: 3.50e-04
+2022-04-22 14:07:25,142 reid_baseline.train INFO: Epoch 22 done. Time per batch: 32.665[s] Speed: 360.5[samples/s]
+2022-04-22 14:07:25,143 reid_baseline.train INFO: ----------
+2022-04-22 14:07:29,247 reid_baseline.train INFO: Epoch[23] Iteration[20/184] Loss: 0.905, Acc: 0.826, Base Lr: 3.50e-04
+2022-04-22 14:07:32,838 reid_baseline.train INFO: Epoch[23] Iteration[40/184] Loss: 0.836, Acc: 0.830, Base Lr: 3.50e-04
+2022-04-22 14:07:36,414 reid_baseline.train INFO: Epoch[23] Iteration[60/184] Loss: 0.768, Acc: 0.839, Base Lr: 3.50e-04
+2022-04-22 14:07:39,965 reid_baseline.train INFO: Epoch[23] Iteration[80/184] Loss: 0.713, Acc: 0.846, Base Lr: 3.50e-04
+2022-04-22 14:07:43,528 reid_baseline.train INFO: Epoch[23] Iteration[100/184] Loss: 0.666, Acc: 0.857, Base Lr: 3.50e-04
+2022-04-22 14:07:47,097 reid_baseline.train INFO: Epoch[23] Iteration[120/184] Loss: 0.583, Acc: 0.874, Base Lr: 3.50e-04
+2022-04-22 14:07:50,666 reid_baseline.train INFO: Epoch[23] Iteration[140/184] Loss: 0.515, Acc: 0.891, Base Lr: 3.50e-04
+2022-04-22 14:07:54,233 reid_baseline.train INFO: Epoch[23] Iteration[160/184] Loss: 0.473, Acc: 0.903, Base Lr: 3.50e-04
+2022-04-22 14:07:57,798 reid_baseline.train INFO: Epoch[23] Iteration[180/184] Loss: 0.395, Acc: 0.922, Base Lr: 3.50e-04
+2022-04-22 14:07:58,644 reid_baseline.train INFO: Epoch 23 done. Time per batch: 32.474[s] Speed: 362.6[samples/s]
+2022-04-22 14:07:58,645 reid_baseline.train INFO: ----------
+2022-04-22 14:08:02,827 reid_baseline.train INFO: Epoch[24] Iteration[20/184] Loss: 1.004, Acc: 0.677, Base Lr: 3.50e-04
+2022-04-22 14:08:06,411 reid_baseline.train INFO: Epoch[24] Iteration[40/184] Loss: 0.875, Acc: 0.737, Base Lr: 3.50e-04
+2022-04-22 14:08:10,018 reid_baseline.train INFO: Epoch[24] Iteration[60/184] Loss: 0.788, Acc: 0.782, Base Lr: 3.50e-04
+2022-04-22 14:08:13,624 reid_baseline.train INFO: Epoch[24] Iteration[80/184] Loss: 0.713, Acc: 0.814, Base Lr: 3.50e-04
+2022-04-22 14:08:17,230 reid_baseline.train INFO: Epoch[24] Iteration[100/184] Loss: 0.675, Acc: 0.831, Base Lr: 3.50e-04
+2022-04-22 14:08:20,823 reid_baseline.train INFO: Epoch[24] Iteration[120/184] Loss: 0.597, Acc: 0.856, Base Lr: 3.50e-04
+2022-04-22 14:08:24,429 reid_baseline.train INFO: Epoch[24] Iteration[140/184] Loss: 0.525, Acc: 0.883, Base Lr: 3.50e-04
+2022-04-22 14:08:28,040 reid_baseline.train INFO: Epoch[24] Iteration[160/184] Loss: 0.475, Acc: 0.900, Base Lr: 3.50e-04
+2022-04-22 14:08:31,620 reid_baseline.train INFO: Epoch[24] Iteration[180/184] Loss: 0.419, Acc: 0.913, Base Lr: 3.50e-04
+2022-04-22 14:08:32,445 reid_baseline.train INFO: Epoch 24 done. Time per batch: 32.701[s] Speed: 360.1[samples/s]
+2022-04-22 14:08:32,446 reid_baseline.train INFO: ----------
+2022-04-22 14:08:36,628 reid_baseline.train INFO: Epoch[25] Iteration[20/183] Loss: 0.790, Acc: 0.765, Base Lr: 3.50e-04
+2022-04-22 14:08:40,209 reid_baseline.train INFO: Epoch[25] Iteration[40/183] Loss: 0.767, Acc: 0.791, Base Lr: 3.50e-04
+2022-04-22 14:08:43,797 reid_baseline.train INFO: Epoch[25] Iteration[60/183] Loss: 0.762, Acc: 0.811, Base Lr: 3.50e-04
+2022-04-22 14:08:47,401 reid_baseline.train INFO: Epoch[25] Iteration[80/183] Loss: 0.697, Acc: 0.833, Base Lr: 3.50e-04
+2022-04-22 14:08:50,972 reid_baseline.train INFO: Epoch[25] Iteration[100/183] Loss: 0.657, Acc: 0.848, Base Lr: 3.50e-04
+2022-04-22 14:08:54,626 reid_baseline.train INFO: Epoch[25] Iteration[120/183] Loss: 0.624, Acc: 0.860, Base Lr: 3.50e-04
+2022-04-22 14:08:58,206 reid_baseline.train INFO: Epoch[25] Iteration[140/183] Loss: 0.576, Acc: 0.874, Base Lr: 3.50e-04
+2022-04-22 14:09:01,797 reid_baseline.train INFO: Epoch[25] Iteration[160/183] Loss: 0.496, Acc: 0.894, Base Lr: 3.50e-04
+2022-04-22 14:09:05,371 reid_baseline.train INFO: Epoch[25] Iteration[180/183] Loss: 0.421, Acc: 0.917, Base Lr: 3.50e-04
+2022-04-22 14:09:06,019 reid_baseline.train INFO: Epoch 25 done. Time per batch: 32.509[s] Speed: 360.3[samples/s]
+2022-04-22 14:09:06,019 reid_baseline.train INFO: ----------
+2022-04-22 14:09:10,182 reid_baseline.train INFO: Epoch[26] Iteration[20/183] Loss: 1.034, Acc: 0.707, Base Lr: 3.50e-04
+2022-04-22 14:09:13,750 reid_baseline.train INFO: Epoch[26] Iteration[40/183] Loss: 0.900, Acc: 0.758, Base Lr: 3.50e-04
+2022-04-22 14:09:17,322 reid_baseline.train INFO: Epoch[26] Iteration[60/183] Loss: 0.776, Acc: 0.802, Base Lr: 3.50e-04
+2022-04-22 14:09:20,875 reid_baseline.train INFO: Epoch[26] Iteration[80/183] Loss: 0.726, Acc: 0.822, Base Lr: 3.50e-04
+2022-04-22 14:09:24,435 reid_baseline.train INFO: Epoch[26] Iteration[100/183] Loss: 0.662, Acc: 0.848, Base Lr: 3.50e-04
+2022-04-22 14:09:28,000 reid_baseline.train INFO: Epoch[26] Iteration[120/183] Loss: 0.645, Acc: 0.859, Base Lr: 3.50e-04
+2022-04-22 14:09:31,582 reid_baseline.train INFO: Epoch[26] Iteration[140/183] Loss: 0.576, Acc: 0.873, Base Lr: 3.50e-04
+2022-04-22 14:09:35,140 reid_baseline.train INFO: Epoch[26] Iteration[160/183] Loss: 0.473, Acc: 0.902, Base Lr: 3.50e-04
+2022-04-22 14:09:38,701 reid_baseline.train INFO: Epoch[26] Iteration[180/183] Loss: 0.394, Acc: 0.921, Base Lr: 3.50e-04
+2022-04-22 14:09:39,347 reid_baseline.train INFO: Epoch 26 done. Time per batch: 32.325[s] Speed: 362.3[samples/s]
+2022-04-22 14:09:39,348 reid_baseline.train INFO: ----------
+2022-04-22 14:09:43,508 reid_baseline.train INFO: Epoch[27] Iteration[20/183] Loss: 0.716, Acc: 0.794, Base Lr: 3.50e-04
+2022-04-22 14:09:47,134 reid_baseline.train INFO: Epoch[27] Iteration[40/183] Loss: 0.669, Acc: 0.820, Base Lr: 3.50e-04
+2022-04-22 14:09:50,745 reid_baseline.train INFO: Epoch[27] Iteration[60/183] Loss: 0.617, Acc: 0.839, Base Lr: 3.50e-04
+2022-04-22 14:09:54,329 reid_baseline.train INFO: Epoch[27] Iteration[80/183] Loss: 0.567, Acc: 0.858, Base Lr: 3.50e-04
+2022-04-22 14:09:57,925 reid_baseline.train INFO: Epoch[27] Iteration[100/183] Loss: 0.538, Acc: 0.871, Base Lr: 3.50e-04
+2022-04-22 14:10:01,528 reid_baseline.train INFO: Epoch[27] Iteration[120/183] Loss: 0.488, Acc: 0.889, Base Lr: 3.50e-04
+2022-04-22 14:10:05,090 reid_baseline.train INFO: Epoch[27] Iteration[140/183] Loss: 0.448, Acc: 0.903, Base Lr: 3.50e-04
+2022-04-22 14:10:08,649 reid_baseline.train INFO: Epoch[27] Iteration[160/183] Loss: 0.404, Acc: 0.913, Base Lr: 3.50e-04
+2022-04-22 14:10:12,230 reid_baseline.train INFO: Epoch[27] Iteration[180/183] Loss: 0.350, Acc: 0.928, Base Lr: 3.50e-04
+2022-04-22 14:10:12,878 reid_baseline.train INFO: Epoch 27 done. Time per batch: 32.450[s] Speed: 360.9[samples/s]
+2022-04-22 14:10:12,878 reid_baseline.train INFO: ----------
+2022-04-22 14:10:17,019 reid_baseline.train INFO: Epoch[28] Iteration[20/183] Loss: 0.945, Acc: 0.762, Base Lr: 3.50e-04
+2022-04-22 14:10:20,608 reid_baseline.train INFO: Epoch[28] Iteration[40/183] Loss: 0.841, Acc: 0.794, Base Lr: 3.50e-04
+2022-04-22 14:10:24,202 reid_baseline.train INFO: Epoch[28] Iteration[60/183] Loss: 0.734, Acc: 0.826, Base Lr: 3.50e-04
+2022-04-22 14:10:27,831 reid_baseline.train INFO: Epoch[28] Iteration[80/183] Loss: 0.673, Acc: 0.843, Base Lr: 3.50e-04
+2022-04-22 14:10:31,425 reid_baseline.train INFO: Epoch[28] Iteration[100/183] Loss: 0.611, Acc: 0.861, Base Lr: 3.50e-04
+2022-04-22 14:10:35,044 reid_baseline.train INFO: Epoch[28] Iteration[120/183] Loss: 0.551, Acc: 0.874, Base Lr: 3.50e-04
+2022-04-22 14:10:38,614 reid_baseline.train INFO: Epoch[28] Iteration[140/183] Loss: 0.501, Acc: 0.892, Base Lr: 3.50e-04
+2022-04-22 14:10:42,221 reid_baseline.train INFO: Epoch[28] Iteration[160/183] Loss: 0.430, Acc: 0.912, Base Lr: 3.50e-04
+2022-04-22 14:10:45,823 reid_baseline.train INFO: Epoch[28] Iteration[180/183] Loss: 0.376, Acc: 0.928, Base Lr: 3.50e-04
+2022-04-22 14:10:46,477 reid_baseline.train INFO: Epoch 28 done. Time per batch: 32.493[s] Speed: 360.4[samples/s]
+2022-04-22 14:10:46,477 reid_baseline.train INFO: ----------
+2022-04-22 14:10:50,671 reid_baseline.train INFO: Epoch[29] Iteration[20/184] Loss: 0.861, Acc: 0.739, Base Lr: 3.50e-04
+2022-04-22 14:10:54,264 reid_baseline.train INFO: Epoch[29] Iteration[40/184] Loss: 0.723, Acc: 0.798, Base Lr: 3.50e-04
+2022-04-22 14:10:57,823 reid_baseline.train INFO: Epoch[29] Iteration[60/184] Loss: 0.656, Acc: 0.831, Base Lr: 3.50e-04
+2022-04-22 14:11:01,372 reid_baseline.train INFO: Epoch[29] Iteration[80/184] Loss: 0.561, Acc: 0.863, Base Lr: 3.50e-04
+2022-04-22 14:11:04,927 reid_baseline.train INFO: Epoch[29] Iteration[100/184] Loss: 0.502, Acc: 0.879, Base Lr: 3.50e-04
+2022-04-22 14:11:08,480 reid_baseline.train INFO: Epoch[29] Iteration[120/184] Loss: 0.454, Acc: 0.899, Base Lr: 3.50e-04
+2022-04-22 14:11:12,044 reid_baseline.train INFO: Epoch[29] Iteration[140/184] Loss: 0.391, Acc: 0.916, Base Lr: 3.50e-04
+2022-04-22 14:11:15,602 reid_baseline.train INFO: Epoch[29] Iteration[160/184] Loss: 0.361, Acc: 0.924, Base Lr: 3.50e-04
+2022-04-22 14:11:19,148 reid_baseline.train INFO: Epoch[29] Iteration[180/184] Loss: 0.310, Acc: 0.940, Base Lr: 3.50e-04
+2022-04-22 14:11:19,989 reid_baseline.train INFO: Epoch 29 done. Time per batch: 32.507[s] Speed: 362.3[samples/s]
+2022-04-22 14:11:19,989 reid_baseline.train INFO: ----------
+2022-04-22 14:11:24,188 reid_baseline.train INFO: Epoch[30] Iteration[20/183] Loss: 1.092, Acc: 0.683, Base Lr: 3.50e-04
+2022-04-22 14:11:27,795 reid_baseline.train INFO: Epoch[30] Iteration[40/183] Loss: 0.901, Acc: 0.753, Base Lr: 3.50e-04
+2022-04-22 14:11:31,380 reid_baseline.train INFO: Epoch[30] Iteration[60/183] Loss: 0.758, Acc: 0.805, Base Lr: 3.50e-04
+2022-04-22 14:11:34,928 reid_baseline.train INFO: Epoch[30] Iteration[80/183] Loss: 0.664, Acc: 0.833, Base Lr: 3.50e-04
+2022-04-22 14:11:38,493 reid_baseline.train INFO: Epoch[30] Iteration[100/183] Loss: 0.585, Acc: 0.859, Base Lr: 3.50e-04
+2022-04-22 14:11:42,044 reid_baseline.train INFO: Epoch[30] Iteration[120/183] Loss: 0.530, Acc: 0.880, Base Lr: 3.50e-04
+2022-04-22 14:11:45,610 reid_baseline.train INFO: Epoch[30] Iteration[140/183] Loss: 0.474, Acc: 0.897, Base Lr: 3.50e-04
+2022-04-22 14:11:49,164 reid_baseline.train INFO: Epoch[30] Iteration[160/183] Loss: 0.404, Acc: 0.913, Base Lr: 3.50e-04
+2022-04-22 14:11:52,706 reid_baseline.train INFO: Epoch[30] Iteration[180/183] Loss: 0.334, Acc: 0.932, Base Lr: 3.50e-04
+2022-04-22 14:11:53,357 reid_baseline.train INFO: Epoch 30 done. Time per batch: 32.373[s] Speed: 361.8[samples/s]
+2022-04-22 14:11:53,358 reid_baseline.train INFO: ----------
+2022-04-22 14:11:57,561 reid_baseline.train INFO: Epoch[31] Iteration[20/184] Loss: 0.702, Acc: 0.861, Base Lr: 3.50e-04
+2022-04-22 14:12:01,136 reid_baseline.train INFO: Epoch[31] Iteration[40/184] Loss: 0.628, Acc: 0.870, Base Lr: 3.50e-04
+2022-04-22 14:12:04,718 reid_baseline.train INFO: Epoch[31] Iteration[60/184] Loss: 0.570, Acc: 0.889, Base Lr: 3.50e-04
+2022-04-22 14:12:08,254 reid_baseline.train INFO: Epoch[31] Iteration[80/184] Loss: 0.543, Acc: 0.896, Base Lr: 3.50e-04
+2022-04-22 14:12:11,823 reid_baseline.train INFO: Epoch[31] Iteration[100/184] Loss: 0.527, Acc: 0.899, Base Lr: 3.50e-04
+2022-04-22 14:12:15,378 reid_baseline.train INFO: Epoch[31] Iteration[120/184] Loss: 0.490, Acc: 0.904, Base Lr: 3.50e-04
+2022-04-22 14:12:18,946 reid_baseline.train INFO: Epoch[31] Iteration[140/184] Loss: 0.437, Acc: 0.913, Base Lr: 3.50e-04
+2022-04-22 14:12:22,535 reid_baseline.train INFO: Epoch[31] Iteration[160/184] Loss: 0.396, Acc: 0.919, Base Lr: 3.50e-04
+2022-04-22 14:12:26,078 reid_baseline.train INFO: Epoch[31] Iteration[180/184] Loss: 0.347, Acc: 0.931, Base Lr: 3.50e-04
+2022-04-22 14:12:26,914 reid_baseline.train INFO: Epoch 31 done. Time per batch: 32.515[s] Speed: 362.2[samples/s]
+2022-04-22 14:12:26,915 reid_baseline.train INFO: ----------
+2022-04-22 14:12:31,110 reid_baseline.train INFO: Epoch[32] Iteration[20/184] Loss: 0.801, Acc: 0.741, Base Lr: 3.50e-04
+2022-04-22 14:12:34,649 reid_baseline.train INFO: Epoch[32] Iteration[40/184] Loss: 0.745, Acc: 0.780, Base Lr: 3.50e-04
+2022-04-22 14:12:38,201 reid_baseline.train INFO: Epoch[32] Iteration[60/184] Loss: 0.710, Acc: 0.804, Base Lr: 3.50e-04
+2022-04-22 14:12:41,757 reid_baseline.train INFO: Epoch[32] Iteration[80/184] Loss: 0.653, Acc: 0.835, Base Lr: 3.50e-04
+2022-04-22 14:12:45,293 reid_baseline.train INFO: Epoch[32] Iteration[100/184] Loss: 0.582, Acc: 0.859, Base Lr: 3.50e-04
+2022-04-22 14:12:48,850 reid_baseline.train INFO: Epoch[32] Iteration[120/184] Loss: 0.537, Acc: 0.872, Base Lr: 3.50e-04
+2022-04-22 14:12:52,427 reid_baseline.train INFO: Epoch[32] Iteration[140/184] Loss: 0.469, Acc: 0.893, Base Lr: 3.50e-04
+2022-04-22 14:12:55,980 reid_baseline.train INFO: Epoch[32] Iteration[160/184] Loss: 0.402, Acc: 0.913, Base Lr: 3.50e-04
+2022-04-22 14:12:59,523 reid_baseline.train INFO: Epoch[32] Iteration[180/184] Loss: 0.363, Acc: 0.928, Base Lr: 3.50e-04
+2022-04-22 14:13:00,367 reid_baseline.train INFO: Epoch 32 done. Time per batch: 32.448[s] Speed: 362.9[samples/s]
+2022-04-22 14:13:00,368 reid_baseline.train INFO: ----------
+2022-04-22 14:13:04,578 reid_baseline.train INFO: Epoch[33] Iteration[20/183] Loss: 0.723, Acc: 0.803, Base Lr: 3.50e-04
+2022-04-22 14:13:08,166 reid_baseline.train INFO: Epoch[33] Iteration[40/183] Loss: 0.669, Acc: 0.825, Base Lr: 3.50e-04
+2022-04-22 14:13:11,741 reid_baseline.train INFO: Epoch[33] Iteration[60/183] Loss: 0.613, Acc: 0.848, Base Lr: 3.50e-04
+2022-04-22 14:13:15,309 reid_baseline.train INFO: Epoch[33] Iteration[80/183] Loss: 0.536, Acc: 0.875, Base Lr: 3.50e-04
+2022-04-22 14:13:18,855 reid_baseline.train INFO: Epoch[33] Iteration[100/183] Loss: 0.479, Acc: 0.890, Base Lr: 3.50e-04
+2022-04-22 14:13:22,419 reid_baseline.train INFO: Epoch[33] Iteration[120/183] Loss: 0.440, Acc: 0.908, Base Lr: 3.50e-04
+2022-04-22 14:13:25,971 reid_baseline.train INFO: Epoch[33] Iteration[140/183] Loss: 0.422, Acc: 0.912, Base Lr: 3.50e-04
+2022-04-22 14:13:29,530 reid_baseline.train INFO: Epoch[33] Iteration[160/183] Loss: 0.395, Acc: 0.918, Base Lr: 3.50e-04
+2022-04-22 14:13:33,090 reid_baseline.train INFO: Epoch[33] Iteration[180/183] Loss: 0.343, Acc: 0.931, Base Lr: 3.50e-04
+2022-04-22 14:13:33,755 reid_baseline.train INFO: Epoch 33 done. Time per batch: 32.328[s] Speed: 362.3[samples/s]
+2022-04-22 14:13:33,756 reid_baseline.train INFO: ----------
+2022-04-22 14:13:37,929 reid_baseline.train INFO: Epoch[34] Iteration[20/183] Loss: 0.521, Acc: 0.866, Base Lr: 3.50e-04
+2022-04-22 14:13:41,481 reid_baseline.train INFO: Epoch[34] Iteration[40/183] Loss: 0.539, Acc: 0.868, Base Lr: 3.50e-04
+2022-04-22 14:13:45,033 reid_baseline.train INFO: Epoch[34] Iteration[60/183] Loss: 0.504, Acc: 0.882, Base Lr: 3.50e-04
+2022-04-22 14:13:48,583 reid_baseline.train INFO: Epoch[34] Iteration[80/183] Loss: 0.451, Acc: 0.896, Base Lr: 3.50e-04
+2022-04-22 14:13:52,129 reid_baseline.train INFO: Epoch[34] Iteration[100/183] Loss: 0.403, Acc: 0.912, Base Lr: 3.50e-04
+2022-04-22 14:13:55,694 reid_baseline.train INFO: Epoch[34] Iteration[120/183] Loss: 0.354, Acc: 0.928, Base Lr: 3.50e-04
+2022-04-22 14:13:59,250 reid_baseline.train INFO: Epoch[34] Iteration[140/183] Loss: 0.320, Acc: 0.934, Base Lr: 3.50e-04
+2022-04-22 14:14:02,802 reid_baseline.train INFO: Epoch[34] Iteration[160/183] Loss: 0.295, Acc: 0.943, Base Lr: 3.50e-04
+2022-04-22 14:14:06,389 reid_baseline.train INFO: Epoch[34] Iteration[180/183] Loss: 0.274, Acc: 0.948, Base Lr: 3.50e-04
+2022-04-22 14:14:07,049 reid_baseline.train INFO: Epoch 34 done. Time per batch: 32.281[s] Speed: 362.8[samples/s]
+2022-04-22 14:14:07,049 reid_baseline.train INFO: ----------
+2022-04-22 14:14:11,265 reid_baseline.train INFO: Epoch[35] Iteration[20/183] Loss: 0.580, Acc: 0.830, Base Lr: 3.50e-04
+2022-04-22 14:14:14,828 reid_baseline.train INFO: Epoch[35] Iteration[40/183] Loss: 0.542, Acc: 0.854, Base Lr: 3.50e-04
+2022-04-22 14:14:18,409 reid_baseline.train INFO: Epoch[35] Iteration[60/183] Loss: 0.523, Acc: 0.868, Base Lr: 3.50e-04
+2022-04-22 14:14:21,959 reid_baseline.train INFO: Epoch[35] Iteration[80/183] Loss: 0.530, Acc: 0.877, Base Lr: 3.50e-04
+2022-04-22 14:14:25,508 reid_baseline.train INFO: Epoch[35] Iteration[100/183] Loss: 0.531, Acc: 0.882, Base Lr: 3.50e-04
+2022-04-22 14:14:29,061 reid_baseline.train INFO: Epoch[35] Iteration[120/183] Loss: 0.493, Acc: 0.888, Base Lr: 3.50e-04
+2022-04-22 14:14:32,623 reid_baseline.train INFO: Epoch[35] Iteration[140/183] Loss: 0.454, Acc: 0.896, Base Lr: 3.50e-04
+2022-04-22 14:14:36,178 reid_baseline.train INFO: Epoch[35] Iteration[160/183] Loss: 0.396, Acc: 0.911, Base Lr: 3.50e-04
+2022-04-22 14:14:39,714 reid_baseline.train INFO: Epoch[35] Iteration[180/183] Loss: 0.316, Acc: 0.931, Base Lr: 3.50e-04
+2022-04-22 14:14:40,372 reid_baseline.train INFO: Epoch 35 done. Time per batch: 32.288[s] Speed: 362.7[samples/s]
+2022-04-22 14:14:40,372 reid_baseline.train INFO: ----------
+2022-04-22 14:14:44,603 reid_baseline.train INFO: Epoch[36] Iteration[20/184] Loss: 0.812, Acc: 0.818, Base Lr: 3.50e-04
+2022-04-22 14:14:48,169 reid_baseline.train INFO: Epoch[36] Iteration[40/184] Loss: 0.730, Acc: 0.837, Base Lr: 3.50e-04
+2022-04-22 14:14:51,821 reid_baseline.train INFO: Epoch[36] Iteration[60/184] Loss: 0.636, Acc: 0.858, Base Lr: 3.50e-04
+2022-04-22 14:14:55,389 reid_baseline.train INFO: Epoch[36] Iteration[80/184] Loss: 0.561, Acc: 0.876, Base Lr: 3.50e-04
+2022-04-22 14:14:58,945 reid_baseline.train INFO: Epoch[36] Iteration[100/184] Loss: 0.503, Acc: 0.895, Base Lr: 3.50e-04
+2022-04-22 14:15:02,494 reid_baseline.train INFO: Epoch[36] Iteration[120/184] Loss: 0.446, Acc: 0.906, Base Lr: 3.50e-04
+2022-04-22 14:15:06,096 reid_baseline.train INFO: Epoch[36] Iteration[140/184] Loss: 0.408, Acc: 0.915, Base Lr: 3.50e-04
+2022-04-22 14:15:09,661 reid_baseline.train INFO: Epoch[36] Iteration[160/184] Loss: 0.389, Acc: 0.920, Base Lr: 3.50e-04
+2022-04-22 14:15:13,187 reid_baseline.train INFO: Epoch[36] Iteration[180/184] Loss: 0.326, Acc: 0.939, Base Lr: 3.50e-04
+2022-04-22 14:15:14,015 reid_baseline.train INFO: Epoch 36 done. Time per batch: 32.596[s] Speed: 361.3[samples/s]
+2022-04-22 14:15:14,015 reid_baseline.train INFO: ----------
+2022-04-22 14:15:18,213 reid_baseline.train INFO: Epoch[37] Iteration[20/183] Loss: 0.835, Acc: 0.827, Base Lr: 3.50e-04
+2022-04-22 14:15:21,809 reid_baseline.train INFO: Epoch[37] Iteration[40/183] Loss: 0.743, Acc: 0.847, Base Lr: 3.50e-04
+2022-04-22 14:15:25,371 reid_baseline.train INFO: Epoch[37] Iteration[60/183] Loss: 0.645, Acc: 0.865, Base Lr: 3.50e-04
+2022-04-22 14:15:28,922 reid_baseline.train INFO: Epoch[37] Iteration[80/183] Loss: 0.593, Acc: 0.873, Base Lr: 3.50e-04
+2022-04-22 14:15:32,528 reid_baseline.train INFO: Epoch[37] Iteration[100/183] Loss: 0.548, Acc: 0.888, Base Lr: 3.50e-04
+2022-04-22 14:15:36,120 reid_baseline.train INFO: Epoch[37] Iteration[120/183] Loss: 0.494, Acc: 0.899, Base Lr: 3.50e-04
+2022-04-22 14:15:39,685 reid_baseline.train INFO: Epoch[37] Iteration[140/183] Loss: 0.457, Acc: 0.910, Base Lr: 3.50e-04
+2022-04-22 14:15:43,245 reid_baseline.train INFO: Epoch[37] Iteration[160/183] Loss: 0.395, Acc: 0.924, Base Lr: 3.50e-04
+2022-04-22 14:15:46,811 reid_baseline.train INFO: Epoch[37] Iteration[180/183] Loss: 0.307, Acc: 0.941, Base Lr: 3.50e-04
+2022-04-22 14:15:47,472 reid_baseline.train INFO: Epoch 37 done. Time per batch: 32.417[s] Speed: 361.3[samples/s]
+2022-04-22 14:15:47,472 reid_baseline.train INFO: ----------
+2022-04-22 14:15:51,696 reid_baseline.train INFO: Epoch[38] Iteration[20/183] Loss: 0.610, Acc: 0.866, Base Lr: 3.50e-04
+2022-04-22 14:15:55,291 reid_baseline.train INFO: Epoch[38] Iteration[40/183] Loss: 0.579, Acc: 0.875, Base Lr: 3.50e-04
+2022-04-22 14:15:58,902 reid_baseline.train INFO: Epoch[38] Iteration[60/183] Loss: 0.548, Acc: 0.881, Base Lr: 3.50e-04
+2022-04-22 14:16:02,494 reid_baseline.train INFO: Epoch[38] Iteration[80/183] Loss: 0.531, Acc: 0.886, Base Lr: 3.50e-04
+2022-04-22 14:16:06,065 reid_baseline.train INFO: Epoch[38] Iteration[100/183] Loss: 0.495, Acc: 0.895, Base Lr: 3.50e-04
+2022-04-22 14:16:09,652 reid_baseline.train INFO: Epoch[38] Iteration[120/183] Loss: 0.470, Acc: 0.905, Base Lr: 3.50e-04
+2022-04-22 14:16:13,219 reid_baseline.train INFO: Epoch[38] Iteration[140/183] Loss: 0.457, Acc: 0.910, Base Lr: 3.50e-04
+2022-04-22 14:16:16,802 reid_baseline.train INFO: Epoch[38] Iteration[160/183] Loss: 0.415, Acc: 0.914, Base Lr: 3.50e-04
+2022-04-22 14:16:20,387 reid_baseline.train INFO: Epoch[38] Iteration[180/183] Loss: 0.344, Acc: 0.931, Base Lr: 3.50e-04
+2022-04-22 14:16:21,042 reid_baseline.train INFO: Epoch 38 done. Time per batch: 32.450[s] Speed: 360.9[samples/s]
+2022-04-22 14:16:21,042 reid_baseline.train INFO: ----------
+2022-04-22 14:16:25,223 reid_baseline.train INFO: Epoch[39] Iteration[20/183] Loss: 0.373, Acc: 0.935, Base Lr: 3.50e-04
+2022-04-22 14:16:28,820 reid_baseline.train INFO: Epoch[39] Iteration[40/183] Loss: 0.435, Acc: 0.918, Base Lr: 3.50e-04
+2022-04-22 14:16:32,449 reid_baseline.train INFO: Epoch[39] Iteration[60/183] Loss: 0.450, Acc: 0.911, Base Lr: 3.50e-04
+2022-04-22 14:16:36,049 reid_baseline.train INFO: Epoch[39] Iteration[80/183] Loss: 0.437, Acc: 0.914, Base Lr: 3.50e-04
+2022-04-22 14:16:39,621 reid_baseline.train INFO: Epoch[39] Iteration[100/183] Loss: 0.423, Acc: 0.917, Base Lr: 3.50e-04
+2022-04-22 14:16:43,146 reid_baseline.train INFO: Epoch[39] Iteration[120/183] Loss: 0.398, Acc: 0.920, Base Lr: 3.50e-04
+2022-04-22 14:16:46,670 reid_baseline.train INFO: Epoch[39] Iteration[140/183] Loss: 0.383, Acc: 0.924, Base Lr: 3.50e-04
+2022-04-22 14:16:50,283 reid_baseline.train INFO: Epoch[39] Iteration[160/183] Loss: 0.357, Acc: 0.930, Base Lr: 3.50e-04
+2022-04-22 14:16:53,875 reid_baseline.train INFO: Epoch[39] Iteration[180/183] Loss: 0.299, Acc: 0.944, Base Lr: 3.50e-04
+2022-04-22 14:16:54,536 reid_baseline.train INFO: Epoch 39 done. Time per batch: 32.410[s] Speed: 361.4[samples/s]
+2022-04-22 14:16:54,537 reid_baseline.train INFO: ----------
+2022-04-22 14:16:58,853 reid_baseline.train INFO: Epoch[40] Iteration[20/184] Loss: 0.496, Acc: 0.869, Base Lr: 3.50e-05
+2022-04-22 14:17:02,427 reid_baseline.train INFO: Epoch[40] Iteration[40/184] Loss: 0.464, Acc: 0.880, Base Lr: 3.50e-05
+2022-04-22 14:17:06,003 reid_baseline.train INFO: Epoch[40] Iteration[60/184] Loss: 0.401, Acc: 0.903, Base Lr: 3.50e-05
+2022-04-22 14:17:09,614 reid_baseline.train INFO: Epoch[40] Iteration[80/184] Loss: 0.353, Acc: 0.916, Base Lr: 3.50e-05
+2022-04-22 14:17:13,199 reid_baseline.train INFO: Epoch[40] Iteration[100/184] Loss: 0.286, Acc: 0.935, Base Lr: 3.50e-05
+2022-04-22 14:17:16,781 reid_baseline.train INFO: Epoch[40] Iteration[120/184] Loss: 0.259, Acc: 0.946, Base Lr: 3.50e-05
+2022-04-22 14:17:20,341 reid_baseline.train INFO: Epoch[40] Iteration[140/184] Loss: 0.223, Acc: 0.957, Base Lr: 3.50e-05
+2022-04-22 14:17:23,878 reid_baseline.train INFO: Epoch[40] Iteration[160/184] Loss: 0.179, Acc: 0.966, Base Lr: 3.50e-05
+2022-04-22 14:17:27,430 reid_baseline.train INFO: Epoch[40] Iteration[180/184] Loss: 0.146, Acc: 0.973, Base Lr: 3.50e-05
+2022-04-22 14:17:29,001 reid_baseline.train INFO: Epoch 40 done. Time per batch: 32.707[s] Speed: 360.0[samples/s]
+2022-04-22 14:17:29,002 reid_baseline.train INFO: ----------
+2022-04-22 14:20:47,696 reid_baseline.train INFO: Validation Results - Epoch: 40
+2022-04-22 14:20:47,697 reid_baseline.train INFO: mAP: 67.6%
+2022-04-22 14:20:47,697 reid_baseline.train INFO: CMC curve, Rank-1  :84.1%
+2022-04-22 14:20:47,697 reid_baseline.train INFO: CMC curve, Rank-5  :93.6%
+2022-04-22 14:20:47,697 reid_baseline.train INFO: CMC curve, Rank-10 :95.9%
+2022-04-22 14:20:51,907 reid_baseline.train INFO: Epoch[41] Iteration[20/184] Loss: 0.359, Acc: 0.904, Base Lr: 3.50e-05
+2022-04-22 14:20:55,433 reid_baseline.train INFO: Epoch[41] Iteration[40/184] Loss: 0.295, Acc: 0.928, Base Lr: 3.50e-05
+2022-04-22 14:20:58,939 reid_baseline.train INFO: Epoch[41] Iteration[60/184] Loss: 0.254, Acc: 0.945, Base Lr: 3.50e-05
+2022-04-22 14:21:02,440 reid_baseline.train INFO: Epoch[41] Iteration[80/184] Loss: 0.218, Acc: 0.957, Base Lr: 3.50e-05
+2022-04-22 14:21:05,928 reid_baseline.train INFO: Epoch[41] Iteration[100/184] Loss: 0.183, Acc: 0.966, Base Lr: 3.50e-05
+2022-04-22 14:21:09,419 reid_baseline.train INFO: Epoch[41] Iteration[120/184] Loss: 0.154, Acc: 0.974, Base Lr: 3.50e-05
+2022-04-22 14:21:12,928 reid_baseline.train INFO: Epoch[41] Iteration[140/184] Loss: 0.133, Acc: 0.978, Base Lr: 3.50e-05
+2022-04-22 14:21:16,440 reid_baseline.train INFO: Epoch[41] Iteration[160/184] Loss: 0.116, Acc: 0.983, Base Lr: 3.50e-05
+2022-04-22 14:21:19,941 reid_baseline.train INFO: Epoch[41] Iteration[180/184] Loss: 0.096, Acc: 0.987, Base Lr: 3.50e-05
+2022-04-22 14:21:20,761 reid_baseline.train INFO: Epoch 41 done. Time per batch: 32.086[s] Speed: 367.0[samples/s]
+2022-04-22 14:21:20,761 reid_baseline.train INFO: ----------
+2022-04-22 14:21:24,950 reid_baseline.train INFO: Epoch[42] Iteration[20/184] Loss: 0.131, Acc: 0.983, Base Lr: 3.50e-05
+2022-04-22 14:21:28,476 reid_baseline.train INFO: Epoch[42] Iteration[40/184] Loss: 0.129, Acc: 0.983, Base Lr: 3.50e-05
+2022-04-22 14:21:32,025 reid_baseline.train INFO: Epoch[42] Iteration[60/184] Loss: 0.135, Acc: 0.985, Base Lr: 3.50e-05
+2022-04-22 14:21:35,549 reid_baseline.train INFO: Epoch[42] Iteration[80/184] Loss: 0.139, Acc: 0.985, Base Lr: 3.50e-05
+2022-04-22 14:21:39,090 reid_baseline.train INFO: Epoch[42] Iteration[100/184] Loss: 0.127, Acc: 0.986, Base Lr: 3.50e-05
+2022-04-22 14:21:42,611 reid_baseline.train INFO: Epoch[42] Iteration[120/184] Loss: 0.111, Acc: 0.987, Base Lr: 3.50e-05
+2022-04-22 14:21:46,135 reid_baseline.train INFO: Epoch[42] Iteration[140/184] Loss: 0.099, Acc: 0.990, Base Lr: 3.50e-05
+2022-04-22 14:21:49,650 reid_baseline.train INFO: Epoch[42] Iteration[160/184] Loss: 0.094, Acc: 0.991, Base Lr: 3.50e-05
+2022-04-22 14:21:53,182 reid_baseline.train INFO: Epoch[42] Iteration[180/184] Loss: 0.078, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:21:54,005 reid_baseline.train INFO: Epoch 42 done. Time per batch: 32.218[s] Speed: 365.5[samples/s]
+2022-04-22 14:21:54,006 reid_baseline.train INFO: ----------
+2022-04-22 14:21:58,097 reid_baseline.train INFO: Epoch[43] Iteration[20/183] Loss: 0.326, Acc: 0.961, Base Lr: 3.50e-05
+2022-04-22 14:22:01,631 reid_baseline.train INFO: Epoch[43] Iteration[40/183] Loss: 0.247, Acc: 0.973, Base Lr: 3.50e-05
+2022-04-22 14:22:05,181 reid_baseline.train INFO: Epoch[43] Iteration[60/183] Loss: 0.202, Acc: 0.977, Base Lr: 3.50e-05
+2022-04-22 14:22:08,740 reid_baseline.train INFO: Epoch[43] Iteration[80/183] Loss: 0.166, Acc: 0.982, Base Lr: 3.50e-05
+2022-04-22 14:22:12,307 reid_baseline.train INFO: Epoch[43] Iteration[100/183] Loss: 0.139, Acc: 0.988, Base Lr: 3.50e-05
+2022-04-22 14:22:15,860 reid_baseline.train INFO: Epoch[43] Iteration[120/183] Loss: 0.115, Acc: 0.989, Base Lr: 3.50e-05
+2022-04-22 14:22:19,385 reid_baseline.train INFO: Epoch[43] Iteration[140/183] Loss: 0.101, Acc: 0.991, Base Lr: 3.50e-05
+2022-04-22 14:22:22,938 reid_baseline.train INFO: Epoch[43] Iteration[160/183] Loss: 0.091, Acc: 0.993, Base Lr: 3.50e-05
+2022-04-22 14:22:26,488 reid_baseline.train INFO: Epoch[43] Iteration[180/183] Loss: 0.081, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:22:27,182 reid_baseline.train INFO: Epoch 43 done. Time per batch: 32.126[s] Speed: 364.6[samples/s]
+2022-04-22 14:22:27,182 reid_baseline.train INFO: ----------
+2022-04-22 14:22:31,397 reid_baseline.train INFO: Epoch[44] Iteration[20/183] Loss: 0.100, Acc: 0.987, Base Lr: 3.50e-05
+2022-04-22 14:22:34,990 reid_baseline.train INFO: Epoch[44] Iteration[40/183] Loss: 0.100, Acc: 0.990, Base Lr: 3.50e-05
+2022-04-22 14:22:38,548 reid_baseline.train INFO: Epoch[44] Iteration[60/183] Loss: 0.096, Acc: 0.991, Base Lr: 3.50e-05
+2022-04-22 14:22:42,092 reid_baseline.train INFO: Epoch[44] Iteration[80/183] Loss: 0.094, Acc: 0.992, Base Lr: 3.50e-05
+2022-04-22 14:22:45,679 reid_baseline.train INFO: Epoch[44] Iteration[100/183] Loss: 0.089, Acc: 0.992, Base Lr: 3.50e-05
+2022-04-22 14:22:49,275 reid_baseline.train INFO: Epoch[44] Iteration[120/183] Loss: 0.083, Acc: 0.993, Base Lr: 3.50e-05
+2022-04-22 14:22:52,827 reid_baseline.train INFO: Epoch[44] Iteration[140/183] Loss: 0.085, Acc: 0.993, Base Lr: 3.50e-05
+2022-04-22 14:22:56,387 reid_baseline.train INFO: Epoch[44] Iteration[160/183] Loss: 0.072, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:22:59,951 reid_baseline.train INFO: Epoch[44] Iteration[180/183] Loss: 0.060, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:23:00,608 reid_baseline.train INFO: Epoch 44 done. Time per batch: 32.336[s] Speed: 362.2[samples/s]
+2022-04-22 14:23:00,608 reid_baseline.train INFO: ----------
+2022-04-22 14:23:04,798 reid_baseline.train INFO: Epoch[45] Iteration[20/184] Loss: 0.056, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:23:08,358 reid_baseline.train INFO: Epoch[45] Iteration[40/184] Loss: 0.068, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:23:11,953 reid_baseline.train INFO: Epoch[45] Iteration[60/184] Loss: 0.072, Acc: 0.993, Base Lr: 3.50e-05
+2022-04-22 14:23:15,510 reid_baseline.train INFO: Epoch[45] Iteration[80/184] Loss: 0.070, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:23:19,065 reid_baseline.train INFO: Epoch[45] Iteration[100/184] Loss: 0.070, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:23:22,609 reid_baseline.train INFO: Epoch[45] Iteration[120/184] Loss: 0.070, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:23:26,175 reid_baseline.train INFO: Epoch[45] Iteration[140/184] Loss: 0.064, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:23:29,723 reid_baseline.train INFO: Epoch[45] Iteration[160/184] Loss: 0.067, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:23:33,273 reid_baseline.train INFO: Epoch[45] Iteration[180/184] Loss: 0.058, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:23:34,115 reid_baseline.train INFO: Epoch 45 done. Time per batch: 32.455[s] Speed: 362.8[samples/s]
+2022-04-22 14:23:34,115 reid_baseline.train INFO: ----------
+2022-04-22 14:23:38,286 reid_baseline.train INFO: Epoch[46] Iteration[20/183] Loss: 0.085, Acc: 0.986, Base Lr: 3.50e-05
+2022-04-22 14:23:41,853 reid_baseline.train INFO: Epoch[46] Iteration[40/183] Loss: 0.085, Acc: 0.988, Base Lr: 3.50e-05
+2022-04-22 14:23:45,414 reid_baseline.train INFO: Epoch[46] Iteration[60/183] Loss: 0.088, Acc: 0.989, Base Lr: 3.50e-05
+2022-04-22 14:23:48,958 reid_baseline.train INFO: Epoch[46] Iteration[80/183] Loss: 0.084, Acc: 0.991, Base Lr: 3.50e-05
+2022-04-22 14:23:52,514 reid_baseline.train INFO: Epoch[46] Iteration[100/183] Loss: 0.082, Acc: 0.991, Base Lr: 3.50e-05
+2022-04-22 14:23:56,069 reid_baseline.train INFO: Epoch[46] Iteration[120/183] Loss: 0.077, Acc: 0.992, Base Lr: 3.50e-05
+2022-04-22 14:23:59,606 reid_baseline.train INFO: Epoch[46] Iteration[140/183] Loss: 0.074, Acc: 0.993, Base Lr: 3.50e-05
+2022-04-22 14:24:03,194 reid_baseline.train INFO: Epoch[46] Iteration[160/183] Loss: 0.064, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:24:06,740 reid_baseline.train INFO: Epoch[46] Iteration[180/183] Loss: 0.056, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:24:07,396 reid_baseline.train INFO: Epoch 46 done. Time per batch: 32.285[s] Speed: 362.8[samples/s]
+2022-04-22 14:24:07,397 reid_baseline.train INFO: ----------
+2022-04-22 14:24:11,604 reid_baseline.train INFO: Epoch[47] Iteration[20/183] Loss: 0.081, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:24:15,162 reid_baseline.train INFO: Epoch[47] Iteration[40/183] Loss: 0.083, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:24:18,724 reid_baseline.train INFO: Epoch[47] Iteration[60/183] Loss: 0.078, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:24:22,282 reid_baseline.train INFO: Epoch[47] Iteration[80/183] Loss: 0.078, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:24:25,827 reid_baseline.train INFO: Epoch[47] Iteration[100/183] Loss: 0.078, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:24:29,378 reid_baseline.train INFO: Epoch[47] Iteration[120/183] Loss: 0.075, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:24:32,928 reid_baseline.train INFO: Epoch[47] Iteration[140/183] Loss: 0.064, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:24:36,460 reid_baseline.train INFO: Epoch[47] Iteration[160/183] Loss: 0.058, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:24:40,010 reid_baseline.train INFO: Epoch[47] Iteration[180/183] Loss: 0.057, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:24:40,661 reid_baseline.train INFO: Epoch 47 done. Time per batch: 32.261[s] Speed: 363.0[samples/s]
+2022-04-22 14:24:40,661 reid_baseline.train INFO: ----------
+2022-04-22 14:24:44,817 reid_baseline.train INFO: Epoch[48] Iteration[20/184] Loss: 0.099, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:24:48,392 reid_baseline.train INFO: Epoch[48] Iteration[40/184] Loss: 0.091, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:24:51,956 reid_baseline.train INFO: Epoch[48] Iteration[60/184] Loss: 0.086, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:24:55,505 reid_baseline.train INFO: Epoch[48] Iteration[80/184] Loss: 0.082, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:24:59,065 reid_baseline.train INFO: Epoch[48] Iteration[100/184] Loss: 0.079, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:25:02,625 reid_baseline.train INFO: Epoch[48] Iteration[120/184] Loss: 0.071, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:25:06,184 reid_baseline.train INFO: Epoch[48] Iteration[140/184] Loss: 0.066, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:25:09,744 reid_baseline.train INFO: Epoch[48] Iteration[160/184] Loss: 0.060, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:25:13,270 reid_baseline.train INFO: Epoch[48] Iteration[180/184] Loss: 0.050, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:25:14,114 reid_baseline.train INFO: Epoch 48 done. Time per batch: 32.423[s] Speed: 363.2[samples/s]
+2022-04-22 14:25:14,115 reid_baseline.train INFO: ----------
+2022-04-22 14:25:18,304 reid_baseline.train INFO: Epoch[49] Iteration[20/183] Loss: 0.048, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:25:21,883 reid_baseline.train INFO: Epoch[49] Iteration[40/183] Loss: 0.061, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:25:25,468 reid_baseline.train INFO: Epoch[49] Iteration[60/183] Loss: 0.071, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:25:29,034 reid_baseline.train INFO: Epoch[49] Iteration[80/183] Loss: 0.074, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:25:32,589 reid_baseline.train INFO: Epoch[49] Iteration[100/183] Loss: 0.074, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:25:36,164 reid_baseline.train INFO: Epoch[49] Iteration[120/183] Loss: 0.067, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:25:39,726 reid_baseline.train INFO: Epoch[49] Iteration[140/183] Loss: 0.064, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:25:43,250 reid_baseline.train INFO: Epoch[49] Iteration[160/183] Loss: 0.055, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:25:46,786 reid_baseline.train INFO: Epoch[49] Iteration[180/183] Loss: 0.053, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:25:47,449 reid_baseline.train INFO: Epoch 49 done. Time per batch: 32.320[s] Speed: 362.4[samples/s]
+2022-04-22 14:25:47,450 reid_baseline.train INFO: ----------
+2022-04-22 14:25:51,622 reid_baseline.train INFO: Epoch[50] Iteration[20/184] Loss: 0.070, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:25:55,175 reid_baseline.train INFO: Epoch[50] Iteration[40/184] Loss: 0.071, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:25:58,740 reid_baseline.train INFO: Epoch[50] Iteration[60/184] Loss: 0.070, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:26:02,319 reid_baseline.train INFO: Epoch[50] Iteration[80/184] Loss: 0.065, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:26:05,932 reid_baseline.train INFO: Epoch[50] Iteration[100/184] Loss: 0.060, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:26:09,502 reid_baseline.train INFO: Epoch[50] Iteration[120/184] Loss: 0.057, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:26:13,058 reid_baseline.train INFO: Epoch[50] Iteration[140/184] Loss: 0.058, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:26:16,624 reid_baseline.train INFO: Epoch[50] Iteration[160/184] Loss: 0.057, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:26:20,181 reid_baseline.train INFO: Epoch[50] Iteration[180/184] Loss: 0.051, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:26:21,013 reid_baseline.train INFO: Epoch 50 done. Time per batch: 32.517[s] Speed: 362.2[samples/s]
+2022-04-22 14:26:21,014 reid_baseline.train INFO: ----------
+2022-04-22 14:26:25,198 reid_baseline.train INFO: Epoch[51] Iteration[20/183] Loss: 0.106, Acc: 0.976, Base Lr: 3.50e-05
+2022-04-22 14:26:28,762 reid_baseline.train INFO: Epoch[51] Iteration[40/183] Loss: 0.095, Acc: 0.982, Base Lr: 3.50e-05
+2022-04-22 14:26:32,319 reid_baseline.train INFO: Epoch[51] Iteration[60/183] Loss: 0.087, Acc: 0.985, Base Lr: 3.50e-05
+2022-04-22 14:26:35,851 reid_baseline.train INFO: Epoch[51] Iteration[80/183] Loss: 0.078, Acc: 0.988, Base Lr: 3.50e-05
+2022-04-22 14:26:39,392 reid_baseline.train INFO: Epoch[51] Iteration[100/183] Loss: 0.074, Acc: 0.991, Base Lr: 3.50e-05
+2022-04-22 14:26:42,935 reid_baseline.train INFO: Epoch[51] Iteration[120/183] Loss: 0.068, Acc: 0.993, Base Lr: 3.50e-05
+2022-04-22 14:26:46,464 reid_baseline.train INFO: Epoch[51] Iteration[140/183] Loss: 0.059, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:26:49,999 reid_baseline.train INFO: Epoch[51] Iteration[160/183] Loss: 0.052, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:26:53,538 reid_baseline.train INFO: Epoch[51] Iteration[180/183] Loss: 0.049, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:26:54,210 reid_baseline.train INFO: Epoch 51 done. Time per batch: 32.209[s] Speed: 363.6[samples/s]
+2022-04-22 14:26:54,210 reid_baseline.train INFO: ----------
+2022-04-22 14:26:58,452 reid_baseline.train INFO: Epoch[52] Iteration[20/183] Loss: 0.068, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:27:02,010 reid_baseline.train INFO: Epoch[52] Iteration[40/183] Loss: 0.069, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:27:05,561 reid_baseline.train INFO: Epoch[52] Iteration[60/183] Loss: 0.072, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:27:09,111 reid_baseline.train INFO: Epoch[52] Iteration[80/183] Loss: 0.073, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:27:12,643 reid_baseline.train INFO: Epoch[52] Iteration[100/183] Loss: 0.071, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:27:16,169 reid_baseline.train INFO: Epoch[52] Iteration[120/183] Loss: 0.063, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:27:19,717 reid_baseline.train INFO: Epoch[52] Iteration[140/183] Loss: 0.059, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:27:23,260 reid_baseline.train INFO: Epoch[52] Iteration[160/183] Loss: 0.054, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:27:26,791 reid_baseline.train INFO: Epoch[52] Iteration[180/183] Loss: 0.046, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:27:27,447 reid_baseline.train INFO: Epoch 52 done. Time per batch: 32.260[s] Speed: 363.1[samples/s]
+2022-04-22 14:27:27,447 reid_baseline.train INFO: ----------
+2022-04-22 14:27:31,576 reid_baseline.train INFO: Epoch[53] Iteration[20/183] Loss: 0.105, Acc: 0.988, Base Lr: 3.50e-05
+2022-04-22 14:27:35,125 reid_baseline.train INFO: Epoch[53] Iteration[40/183] Loss: 0.094, Acc: 0.992, Base Lr: 3.50e-05
+2022-04-22 14:27:38,725 reid_baseline.train INFO: Epoch[53] Iteration[60/183] Loss: 0.086, Acc: 0.993, Base Lr: 3.50e-05
+2022-04-22 14:27:42,295 reid_baseline.train INFO: Epoch[53] Iteration[80/183] Loss: 0.080, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:27:45,841 reid_baseline.train INFO: Epoch[53] Iteration[100/183] Loss: 0.071, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:27:49,394 reid_baseline.train INFO: Epoch[53] Iteration[120/183] Loss: 0.064, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:27:52,949 reid_baseline.train INFO: Epoch[53] Iteration[140/183] Loss: 0.059, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:27:56,503 reid_baseline.train INFO: Epoch[53] Iteration[160/183] Loss: 0.053, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:28:00,040 reid_baseline.train INFO: Epoch[53] Iteration[180/183] Loss: 0.056, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:28:00,686 reid_baseline.train INFO: Epoch 53 done. Time per batch: 32.248[s] Speed: 363.2[samples/s]
+2022-04-22 14:28:00,686 reid_baseline.train INFO: ----------
+2022-04-22 14:28:04,876 reid_baseline.train INFO: Epoch[54] Iteration[20/183] Loss: 0.074, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:28:08,414 reid_baseline.train INFO: Epoch[54] Iteration[40/183] Loss: 0.074, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:28:11,962 reid_baseline.train INFO: Epoch[54] Iteration[60/183] Loss: 0.072, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:28:15,495 reid_baseline.train INFO: Epoch[54] Iteration[80/183] Loss: 0.070, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:28:19,033 reid_baseline.train INFO: Epoch[54] Iteration[100/183] Loss: 0.070, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:28:22,569 reid_baseline.train INFO: Epoch[54] Iteration[120/183] Loss: 0.063, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:28:26,086 reid_baseline.train INFO: Epoch[54] Iteration[140/183] Loss: 0.055, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:28:29,627 reid_baseline.train INFO: Epoch[54] Iteration[160/183] Loss: 0.052, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:28:33,140 reid_baseline.train INFO: Epoch[54] Iteration[180/183] Loss: 0.046, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:28:33,792 reid_baseline.train INFO: Epoch 54 done. Time per batch: 32.181[s] Speed: 363.9[samples/s]
+2022-04-22 14:28:33,792 reid_baseline.train INFO: ----------
+2022-04-22 14:28:37,965 reid_baseline.train INFO: Epoch[55] Iteration[20/184] Loss: 0.092, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:28:41,482 reid_baseline.train INFO: Epoch[55] Iteration[40/184] Loss: 0.085, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:28:45,002 reid_baseline.train INFO: Epoch[55] Iteration[60/184] Loss: 0.079, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:28:48,524 reid_baseline.train INFO: Epoch[55] Iteration[80/184] Loss: 0.077, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:28:52,077 reid_baseline.train INFO: Epoch[55] Iteration[100/184] Loss: 0.068, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:28:55,625 reid_baseline.train INFO: Epoch[55] Iteration[120/184] Loss: 0.059, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:28:59,189 reid_baseline.train INFO: Epoch[55] Iteration[140/184] Loss: 0.058, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:29:02,718 reid_baseline.train INFO: Epoch[55] Iteration[160/184] Loss: 0.050, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:29:06,253 reid_baseline.train INFO: Epoch[55] Iteration[180/184] Loss: 0.046, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:29:07,102 reid_baseline.train INFO: Epoch 55 done. Time per batch: 32.385[s] Speed: 363.6[samples/s]
+2022-04-22 14:29:07,102 reid_baseline.train INFO: ----------
+2022-04-22 14:29:11,255 reid_baseline.train INFO: Epoch[56] Iteration[20/183] Loss: 0.158, Acc: 0.989, Base Lr: 3.50e-05
+2022-04-22 14:29:14,802 reid_baseline.train INFO: Epoch[56] Iteration[40/183] Loss: 0.127, Acc: 0.992, Base Lr: 3.50e-05
+2022-04-22 14:29:18,348 reid_baseline.train INFO: Epoch[56] Iteration[60/183] Loss: 0.105, Acc: 0.993, Base Lr: 3.50e-05
+2022-04-22 14:29:21,874 reid_baseline.train INFO: Epoch[56] Iteration[80/183] Loss: 0.093, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:29:25,411 reid_baseline.train INFO: Epoch[56] Iteration[100/183] Loss: 0.084, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:29:28,962 reid_baseline.train INFO: Epoch[56] Iteration[120/183] Loss: 0.075, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:29:32,501 reid_baseline.train INFO: Epoch[56] Iteration[140/183] Loss: 0.067, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:29:36,059 reid_baseline.train INFO: Epoch[56] Iteration[160/183] Loss: 0.057, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:29:39,599 reid_baseline.train INFO: Epoch[56] Iteration[180/183] Loss: 0.048, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:29:40,256 reid_baseline.train INFO: Epoch 56 done. Time per batch: 32.174[s] Speed: 364.0[samples/s]
+2022-04-22 14:29:40,257 reid_baseline.train INFO: ----------
+2022-04-22 14:29:44,435 reid_baseline.train INFO: Epoch[57] Iteration[20/183] Loss: 0.056, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:29:48,002 reid_baseline.train INFO: Epoch[57] Iteration[40/183] Loss: 0.059, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:29:51,593 reid_baseline.train INFO: Epoch[57] Iteration[60/183] Loss: 0.061, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:29:55,158 reid_baseline.train INFO: Epoch[57] Iteration[80/183] Loss: 0.059, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:29:58,711 reid_baseline.train INFO: Epoch[57] Iteration[100/183] Loss: 0.056, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:30:02,257 reid_baseline.train INFO: Epoch[57] Iteration[120/183] Loss: 0.056, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:30:05,815 reid_baseline.train INFO: Epoch[57] Iteration[140/183] Loss: 0.053, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:30:09,406 reid_baseline.train INFO: Epoch[57] Iteration[160/183] Loss: 0.051, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:30:12,951 reid_baseline.train INFO: Epoch[57] Iteration[180/183] Loss: 0.045, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:30:13,605 reid_baseline.train INFO: Epoch 57 done. Time per batch: 32.353[s] Speed: 362.0[samples/s]
+2022-04-22 14:30:13,606 reid_baseline.train INFO: ----------
+2022-04-22 14:30:17,792 reid_baseline.train INFO: Epoch[58] Iteration[20/183] Loss: 0.095, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:30:21,374 reid_baseline.train INFO: Epoch[58] Iteration[40/183] Loss: 0.085, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:30:24,940 reid_baseline.train INFO: Epoch[58] Iteration[60/183] Loss: 0.080, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:30:28,485 reid_baseline.train INFO: Epoch[58] Iteration[80/183] Loss: 0.073, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:30:32,033 reid_baseline.train INFO: Epoch[58] Iteration[100/183] Loss: 0.069, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:30:35,591 reid_baseline.train INFO: Epoch[58] Iteration[120/183] Loss: 0.065, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:30:39,152 reid_baseline.train INFO: Epoch[58] Iteration[140/183] Loss: 0.061, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:30:42,704 reid_baseline.train INFO: Epoch[58] Iteration[160/183] Loss: 0.053, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:30:46,264 reid_baseline.train INFO: Epoch[58] Iteration[180/183] Loss: 0.047, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:30:46,914 reid_baseline.train INFO: Epoch 58 done. Time per batch: 32.307[s] Speed: 362.5[samples/s]
+2022-04-22 14:30:46,914 reid_baseline.train INFO: ----------
+2022-04-22 14:30:51,111 reid_baseline.train INFO: Epoch[59] Iteration[20/182] Loss: 0.102, Acc: 0.988, Base Lr: 3.50e-05
+2022-04-22 14:30:54,673 reid_baseline.train INFO: Epoch[59] Iteration[40/182] Loss: 0.091, Acc: 0.991, Base Lr: 3.50e-05
+2022-04-22 14:30:58,242 reid_baseline.train INFO: Epoch[59] Iteration[60/182] Loss: 0.078, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:31:01,798 reid_baseline.train INFO: Epoch[59] Iteration[80/182] Loss: 0.073, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:31:05,325 reid_baseline.train INFO: Epoch[59] Iteration[100/182] Loss: 0.070, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:31:08,903 reid_baseline.train INFO: Epoch[59] Iteration[120/182] Loss: 0.065, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:31:12,476 reid_baseline.train INFO: Epoch[59] Iteration[140/182] Loss: 0.058, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:31:16,041 reid_baseline.train INFO: Epoch[59] Iteration[160/182] Loss: 0.055, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:31:19,588 reid_baseline.train INFO: Epoch[59] Iteration[180/182] Loss: 0.059, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:31:20,089 reid_baseline.train INFO: Epoch 59 done. Time per batch: 32.154[s] Speed: 362.3[samples/s]
+2022-04-22 14:31:20,089 reid_baseline.train INFO: ----------
+2022-04-22 14:31:24,298 reid_baseline.train INFO: Epoch[60] Iteration[20/183] Loss: 0.127, Acc: 0.978, Base Lr: 3.50e-05
+2022-04-22 14:31:27,879 reid_baseline.train INFO: Epoch[60] Iteration[40/183] Loss: 0.111, Acc: 0.985, Base Lr: 3.50e-05
+2022-04-22 14:31:31,435 reid_baseline.train INFO: Epoch[60] Iteration[60/183] Loss: 0.097, Acc: 0.989, Base Lr: 3.50e-05
+2022-04-22 14:31:34,994 reid_baseline.train INFO: Epoch[60] Iteration[80/183] Loss: 0.083, Acc: 0.991, Base Lr: 3.50e-05
+2022-04-22 14:31:38,547 reid_baseline.train INFO: Epoch[60] Iteration[100/183] Loss: 0.078, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:31:42,132 reid_baseline.train INFO: Epoch[60] Iteration[120/183] Loss: 0.067, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:31:45,702 reid_baseline.train INFO: Epoch[60] Iteration[140/183] Loss: 0.062, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:31:49,247 reid_baseline.train INFO: Epoch[60] Iteration[160/183] Loss: 0.060, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:31:52,789 reid_baseline.train INFO: Epoch[60] Iteration[180/183] Loss: 0.053, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:31:53,458 reid_baseline.train INFO: Epoch 60 done. Time per batch: 32.325[s] Speed: 362.3[samples/s]
+2022-04-22 14:31:53,459 reid_baseline.train INFO: ----------
+2022-04-22 14:31:57,624 reid_baseline.train INFO: Epoch[61] Iteration[20/184] Loss: 0.122, Acc: 0.978, Base Lr: 3.50e-05
+2022-04-22 14:32:01,193 reid_baseline.train INFO: Epoch[61] Iteration[40/184] Loss: 0.105, Acc: 0.985, Base Lr: 3.50e-05
+2022-04-22 14:32:04,760 reid_baseline.train INFO: Epoch[61] Iteration[60/184] Loss: 0.094, Acc: 0.989, Base Lr: 3.50e-05
+2022-04-22 14:32:08,374 reid_baseline.train INFO: Epoch[61] Iteration[80/184] Loss: 0.084, Acc: 0.992, Base Lr: 3.50e-05
+2022-04-22 14:32:11,915 reid_baseline.train INFO: Epoch[61] Iteration[100/184] Loss: 0.074, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:32:15,458 reid_baseline.train INFO: Epoch[61] Iteration[120/184] Loss: 0.070, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:32:18,988 reid_baseline.train INFO: Epoch[61] Iteration[140/184] Loss: 0.061, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:32:22,553 reid_baseline.train INFO: Epoch[61] Iteration[160/184] Loss: 0.053, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:32:26,090 reid_baseline.train INFO: Epoch[61] Iteration[180/184] Loss: 0.047, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:32:26,936 reid_baseline.train INFO: Epoch 61 done. Time per batch: 32.445[s] Speed: 363.0[samples/s]
+2022-04-22 14:32:26,937 reid_baseline.train INFO: ----------
+2022-04-22 14:32:31,108 reid_baseline.train INFO: Epoch[62] Iteration[20/184] Loss: 0.061, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:32:34,655 reid_baseline.train INFO: Epoch[62] Iteration[40/184] Loss: 0.064, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:32:38,219 reid_baseline.train INFO: Epoch[62] Iteration[60/184] Loss: 0.066, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:32:41,776 reid_baseline.train INFO: Epoch[62] Iteration[80/184] Loss: 0.068, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:32:45,334 reid_baseline.train INFO: Epoch[62] Iteration[100/184] Loss: 0.064, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:32:48,899 reid_baseline.train INFO: Epoch[62] Iteration[120/184] Loss: 0.062, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:32:52,466 reid_baseline.train INFO: Epoch[62] Iteration[140/184] Loss: 0.057, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:32:56,015 reid_baseline.train INFO: Epoch[62] Iteration[160/184] Loss: 0.050, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:32:59,568 reid_baseline.train INFO: Epoch[62] Iteration[180/184] Loss: 0.044, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:33:00,399 reid_baseline.train INFO: Epoch 62 done. Time per batch: 32.448[s] Speed: 362.9[samples/s]
+2022-04-22 14:33:00,399 reid_baseline.train INFO: ----------
+2022-04-22 14:33:04,634 reid_baseline.train INFO: Epoch[63] Iteration[20/183] Loss: 0.082, Acc: 1.000, Base Lr: 3.50e-05
+2022-04-22 14:33:08,212 reid_baseline.train INFO: Epoch[63] Iteration[40/183] Loss: 0.077, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:33:11,780 reid_baseline.train INFO: Epoch[63] Iteration[60/183] Loss: 0.075, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:33:15,316 reid_baseline.train INFO: Epoch[63] Iteration[80/183] Loss: 0.070, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:33:18,866 reid_baseline.train INFO: Epoch[63] Iteration[100/183] Loss: 0.065, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:33:22,405 reid_baseline.train INFO: Epoch[63] Iteration[120/183] Loss: 0.063, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:33:25,966 reid_baseline.train INFO: Epoch[63] Iteration[140/183] Loss: 0.055, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:33:29,516 reid_baseline.train INFO: Epoch[63] Iteration[160/183] Loss: 0.051, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:33:33,049 reid_baseline.train INFO: Epoch[63] Iteration[180/183] Loss: 0.048, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:33:33,693 reid_baseline.train INFO: Epoch 63 done. Time per batch: 32.299[s] Speed: 362.6[samples/s]
+2022-04-22 14:33:33,693 reid_baseline.train INFO: ----------
+2022-04-22 14:33:37,954 reid_baseline.train INFO: Epoch[64] Iteration[20/183] Loss: 0.106, Acc: 0.989, Base Lr: 3.50e-05
+2022-04-22 14:33:41,508 reid_baseline.train INFO: Epoch[64] Iteration[40/183] Loss: 0.095, Acc: 0.992, Base Lr: 3.50e-05
+2022-04-22 14:33:45,068 reid_baseline.train INFO: Epoch[64] Iteration[60/183] Loss: 0.085, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:33:48,626 reid_baseline.train INFO: Epoch[64] Iteration[80/183] Loss: 0.079, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:33:52,177 reid_baseline.train INFO: Epoch[64] Iteration[100/183] Loss: 0.071, Acc: 0.995, Base Lr: 3.50e-05
+2022-04-22 14:33:55,718 reid_baseline.train INFO: Epoch[64] Iteration[120/183] Loss: 0.067, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:33:59,282 reid_baseline.train INFO: Epoch[64] Iteration[140/183] Loss: 0.058, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:34:02,844 reid_baseline.train INFO: Epoch[64] Iteration[160/183] Loss: 0.051, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:34:06,409 reid_baseline.train INFO: Epoch[64] Iteration[180/183] Loss: 0.045, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:34:07,072 reid_baseline.train INFO: Epoch 64 done. Time per batch: 32.389[s] Speed: 361.6[samples/s]
+2022-04-22 14:34:07,072 reid_baseline.train INFO: ----------
+2022-04-22 14:34:11,262 reid_baseline.train INFO: Epoch[65] Iteration[20/184] Loss: 0.099, Acc: 0.988, Base Lr: 3.50e-05
+2022-04-22 14:34:14,809 reid_baseline.train INFO: Epoch[65] Iteration[40/184] Loss: 0.088, Acc: 0.991, Base Lr: 3.50e-05
+2022-04-22 14:34:18,367 reid_baseline.train INFO: Epoch[65] Iteration[60/184] Loss: 0.081, Acc: 0.994, Base Lr: 3.50e-05
+2022-04-22 14:34:21,927 reid_baseline.train INFO: Epoch[65] Iteration[80/184] Loss: 0.074, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:34:25,480 reid_baseline.train INFO: Epoch[65] Iteration[100/184] Loss: 0.069, Acc: 0.996, Base Lr: 3.50e-05
+2022-04-22 14:34:29,046 reid_baseline.train INFO: Epoch[65] Iteration[120/184] Loss: 0.064, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:34:32,584 reid_baseline.train INFO: Epoch[65] Iteration[140/184] Loss: 0.059, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:34:36,139 reid_baseline.train INFO: Epoch[65] Iteration[160/184] Loss: 0.053, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:34:39,675 reid_baseline.train INFO: Epoch[65] Iteration[180/184] Loss: 0.045, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:34:40,509 reid_baseline.train INFO: Epoch 65 done. Time per batch: 32.450[s] Speed: 362.9[samples/s]
+2022-04-22 14:34:40,510 reid_baseline.train INFO: ----------
+2022-04-22 14:34:44,695 reid_baseline.train INFO: Epoch[66] Iteration[20/184] Loss: 0.049, Acc: 1.000, Base Lr: 3.50e-05
+2022-04-22 14:34:48,260 reid_baseline.train INFO: Epoch[66] Iteration[40/184] Loss: 0.059, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:34:51,814 reid_baseline.train INFO: Epoch[66] Iteration[60/184] Loss: 0.066, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:34:55,359 reid_baseline.train INFO: Epoch[66] Iteration[80/184] Loss: 0.065, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:34:58,922 reid_baseline.train INFO: Epoch[66] Iteration[100/184] Loss: 0.061, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:35:02,457 reid_baseline.train INFO: Epoch[66] Iteration[120/184] Loss: 0.059, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:35:06,001 reid_baseline.train INFO: Epoch[66] Iteration[140/184] Loss: 0.054, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:35:09,542 reid_baseline.train INFO: Epoch[66] Iteration[160/184] Loss: 0.055, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:35:13,080 reid_baseline.train INFO: Epoch[66] Iteration[180/184] Loss: 0.048, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:35:13,918 reid_baseline.train INFO: Epoch 66 done. Time per batch: 32.401[s] Speed: 363.4[samples/s]
+2022-04-22 14:35:13,919 reid_baseline.train INFO: ----------
+2022-04-22 14:35:18,112 reid_baseline.train INFO: Epoch[67] Iteration[20/183] Loss: 0.070, Acc: 1.000, Base Lr: 3.50e-05
+2022-04-22 14:35:21,670 reid_baseline.train INFO: Epoch[67] Iteration[40/183] Loss: 0.074, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:35:25,273 reid_baseline.train INFO: Epoch[67] Iteration[60/183] Loss: 0.070, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:35:28,838 reid_baseline.train INFO: Epoch[67] Iteration[80/183] Loss: 0.065, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:35:32,391 reid_baseline.train INFO: Epoch[67] Iteration[100/183] Loss: 0.062, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:35:35,952 reid_baseline.train INFO: Epoch[67] Iteration[120/183] Loss: 0.059, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:35:39,549 reid_baseline.train INFO: Epoch[67] Iteration[140/183] Loss: 0.052, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:35:43,129 reid_baseline.train INFO: Epoch[67] Iteration[160/183] Loss: 0.047, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:35:46,704 reid_baseline.train INFO: Epoch[67] Iteration[180/183] Loss: 0.040, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:35:47,378 reid_baseline.train INFO: Epoch 67 done. Time per batch: 32.405[s] Speed: 361.4[samples/s]
+2022-04-22 14:35:47,379 reid_baseline.train INFO: ----------
+2022-04-22 14:35:51,649 reid_baseline.train INFO: Epoch[68] Iteration[20/183] Loss: 0.085, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:35:55,205 reid_baseline.train INFO: Epoch[68] Iteration[40/183] Loss: 0.080, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:35:58,762 reid_baseline.train INFO: Epoch[68] Iteration[60/183] Loss: 0.077, Acc: 0.997, Base Lr: 3.50e-05
+2022-04-22 14:36:02,320 reid_baseline.train INFO: Epoch[68] Iteration[80/183] Loss: 0.072, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:36:05,913 reid_baseline.train INFO: Epoch[68] Iteration[100/183] Loss: 0.065, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:36:09,491 reid_baseline.train INFO: Epoch[68] Iteration[120/183] Loss: 0.063, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:36:13,028 reid_baseline.train INFO: Epoch[68] Iteration[140/183] Loss: 0.057, Acc: 0.998, Base Lr: 3.50e-05
+2022-04-22 14:36:16,585 reid_baseline.train INFO: Epoch[68] Iteration[160/183] Loss: 0.049, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:36:20,150 reid_baseline.train INFO: Epoch[68] Iteration[180/183] Loss: 0.043, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:36:20,817 reid_baseline.train INFO: Epoch 68 done. Time per batch: 32.407[s] Speed: 361.4[samples/s]
+2022-04-22 14:36:20,817 reid_baseline.train INFO: ----------
+2022-04-22 14:36:24,923 reid_baseline.train INFO: Epoch[69] Iteration[20/183] Loss: 0.056, Acc: 1.000, Base Lr: 3.50e-05
+2022-04-22 14:36:28,498 reid_baseline.train INFO: Epoch[69] Iteration[40/183] Loss: 0.062, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:36:32,042 reid_baseline.train INFO: Epoch[69] Iteration[60/183] Loss: 0.062, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:36:35,581 reid_baseline.train INFO: Epoch[69] Iteration[80/183] Loss: 0.065, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:36:39,159 reid_baseline.train INFO: Epoch[69] Iteration[100/183] Loss: 0.062, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:36:42,701 reid_baseline.train INFO: Epoch[69] Iteration[120/183] Loss: 0.059, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:36:46,274 reid_baseline.train INFO: Epoch[69] Iteration[140/183] Loss: 0.055, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:36:49,805 reid_baseline.train INFO: Epoch[69] Iteration[160/183] Loss: 0.052, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:36:53,328 reid_baseline.train INFO: Epoch[69] Iteration[180/183] Loss: 0.045, Acc: 0.999, Base Lr: 3.50e-05
+2022-04-22 14:36:53,997 reid_baseline.train INFO: Epoch 69 done. Time per batch: 32.180[s] Speed: 364.0[samples/s]
+2022-04-22 14:36:53,997 reid_baseline.train INFO: ----------
+2022-04-22 14:36:58,205 reid_baseline.train INFO: Epoch[70] Iteration[20/184] Loss: 0.077, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:37:01,753 reid_baseline.train INFO: Epoch[70] Iteration[40/184] Loss: 0.075, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:37:05,323 reid_baseline.train INFO: Epoch[70] Iteration[60/184] Loss: 0.072, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:37:08,836 reid_baseline.train INFO: Epoch[70] Iteration[80/184] Loss: 0.067, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:37:12,366 reid_baseline.train INFO: Epoch[70] Iteration[100/184] Loss: 0.061, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:37:15,908 reid_baseline.train INFO: Epoch[70] Iteration[120/184] Loss: 0.055, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:37:19,458 reid_baseline.train INFO: Epoch[70] Iteration[140/184] Loss: 0.050, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:37:23,019 reid_baseline.train INFO: Epoch[70] Iteration[160/184] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:37:26,565 reid_baseline.train INFO: Epoch[70] Iteration[180/184] Loss: 0.037, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:37:27,411 reid_baseline.train INFO: Epoch 70 done. Time per batch: 32.394[s] Speed: 363.5[samples/s]
+2022-04-22 14:37:27,412 reid_baseline.train INFO: ----------
+2022-04-22 14:37:31,566 reid_baseline.train INFO: Epoch[71] Iteration[20/183] Loss: 0.059, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:37:35,148 reid_baseline.train INFO: Epoch[71] Iteration[40/183] Loss: 0.063, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:37:38,701 reid_baseline.train INFO: Epoch[71] Iteration[60/183] Loss: 0.061, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:37:42,241 reid_baseline.train INFO: Epoch[71] Iteration[80/183] Loss: 0.058, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:37:45,815 reid_baseline.train INFO: Epoch[71] Iteration[100/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:37:49,377 reid_baseline.train INFO: Epoch[71] Iteration[120/183] Loss: 0.051, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:37:52,914 reid_baseline.train INFO: Epoch[71] Iteration[140/183] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:37:56,423 reid_baseline.train INFO: Epoch[71] Iteration[160/183] Loss: 0.041, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:37:59,992 reid_baseline.train INFO: Epoch[71] Iteration[180/183] Loss: 0.035, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:38:00,651 reid_baseline.train INFO: Epoch 71 done. Time per batch: 32.215[s] Speed: 363.6[samples/s]
+2022-04-22 14:38:00,652 reid_baseline.train INFO: ----------
+2022-04-22 14:38:04,792 reid_baseline.train INFO: Epoch[72] Iteration[20/184] Loss: 0.075, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:38:08,376 reid_baseline.train INFO: Epoch[72] Iteration[40/184] Loss: 0.068, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:38:11,922 reid_baseline.train INFO: Epoch[72] Iteration[60/184] Loss: 0.064, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:38:15,487 reid_baseline.train INFO: Epoch[72] Iteration[80/184] Loss: 0.058, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:38:19,078 reid_baseline.train INFO: Epoch[72] Iteration[100/184] Loss: 0.054, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:38:22,668 reid_baseline.train INFO: Epoch[72] Iteration[120/184] Loss: 0.051, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:38:26,242 reid_baseline.train INFO: Epoch[72] Iteration[140/184] Loss: 0.046, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:38:29,815 reid_baseline.train INFO: Epoch[72] Iteration[160/184] Loss: 0.042, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:38:33,405 reid_baseline.train INFO: Epoch[72] Iteration[180/184] Loss: 0.037, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:38:34,241 reid_baseline.train INFO: Epoch 72 done. Time per batch: 32.471[s] Speed: 362.7[samples/s]
+2022-04-22 14:38:34,241 reid_baseline.train INFO: ----------
+2022-04-22 14:38:38,370 reid_baseline.train INFO: Epoch[73] Iteration[20/183] Loss: 0.073, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:38:41,914 reid_baseline.train INFO: Epoch[73] Iteration[40/183] Loss: 0.073, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:38:45,477 reid_baseline.train INFO: Epoch[73] Iteration[60/183] Loss: 0.069, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:38:49,024 reid_baseline.train INFO: Epoch[73] Iteration[80/183] Loss: 0.065, Acc: 0.998, Base Lr: 3.50e-06
+2022-04-22 14:38:52,566 reid_baseline.train INFO: Epoch[73] Iteration[100/183] Loss: 0.058, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:38:56,090 reid_baseline.train INFO: Epoch[73] Iteration[120/183] Loss: 0.051, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:38:59,632 reid_baseline.train INFO: Epoch[73] Iteration[140/183] Loss: 0.046, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:39:03,184 reid_baseline.train INFO: Epoch[73] Iteration[160/183] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:39:06,733 reid_baseline.train INFO: Epoch[73] Iteration[180/183] Loss: 0.035, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:39:07,371 reid_baseline.train INFO: Epoch 73 done. Time per batch: 32.129[s] Speed: 364.5[samples/s]
+2022-04-22 14:39:07,372 reid_baseline.train INFO: ----------
+2022-04-22 14:39:11,560 reid_baseline.train INFO: Epoch[74] Iteration[20/183] Loss: 0.056, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:39:15,116 reid_baseline.train INFO: Epoch[74] Iteration[40/183] Loss: 0.059, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:39:18,657 reid_baseline.train INFO: Epoch[74] Iteration[60/183] Loss: 0.055, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:39:22,189 reid_baseline.train INFO: Epoch[74] Iteration[80/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:39:25,743 reid_baseline.train INFO: Epoch[74] Iteration[100/183] Loss: 0.049, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:39:29,290 reid_baseline.train INFO: Epoch[74] Iteration[120/183] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:39:32,841 reid_baseline.train INFO: Epoch[74] Iteration[140/183] Loss: 0.042, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:39:36,380 reid_baseline.train INFO: Epoch[74] Iteration[160/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:39:39,914 reid_baseline.train INFO: Epoch[74] Iteration[180/183] Loss: 0.033, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:39:40,561 reid_baseline.train INFO: Epoch 74 done. Time per batch: 32.206[s] Speed: 363.7[samples/s]
+2022-04-22 14:39:40,561 reid_baseline.train INFO: ----------
+2022-04-22 14:39:44,749 reid_baseline.train INFO: Epoch[75] Iteration[20/183] Loss: 0.075, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:39:48,327 reid_baseline.train INFO: Epoch[75] Iteration[40/183] Loss: 0.069, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:39:51,895 reid_baseline.train INFO: Epoch[75] Iteration[60/183] Loss: 0.064, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:39:55,447 reid_baseline.train INFO: Epoch[75] Iteration[80/183] Loss: 0.058, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:39:59,014 reid_baseline.train INFO: Epoch[75] Iteration[100/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:40:02,566 reid_baseline.train INFO: Epoch[75] Iteration[120/183] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:40:06,107 reid_baseline.train INFO: Epoch[75] Iteration[140/183] Loss: 0.045, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:40:09,655 reid_baseline.train INFO: Epoch[75] Iteration[160/183] Loss: 0.042, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:40:13,181 reid_baseline.train INFO: Epoch[75] Iteration[180/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:40:13,829 reid_baseline.train INFO: Epoch 75 done. Time per batch: 32.246[s] Speed: 363.2[samples/s]
+2022-04-22 14:40:13,829 reid_baseline.train INFO: ----------
+2022-04-22 14:40:18,040 reid_baseline.train INFO: Epoch[76] Iteration[20/184] Loss: 0.056, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:40:21,607 reid_baseline.train INFO: Epoch[76] Iteration[40/184] Loss: 0.057, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:40:25,161 reid_baseline.train INFO: Epoch[76] Iteration[60/184] Loss: 0.056, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:40:28,754 reid_baseline.train INFO: Epoch[76] Iteration[80/184] Loss: 0.054, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:40:32,286 reid_baseline.train INFO: Epoch[76] Iteration[100/184] Loss: 0.050, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:40:35,827 reid_baseline.train INFO: Epoch[76] Iteration[120/184] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:40:39,377 reid_baseline.train INFO: Epoch[76] Iteration[140/184] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:40:42,927 reid_baseline.train INFO: Epoch[76] Iteration[160/184] Loss: 0.037, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:40:46,474 reid_baseline.train INFO: Epoch[76] Iteration[180/184] Loss: 0.032, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:40:47,302 reid_baseline.train INFO: Epoch 76 done. Time per batch: 32.467[s] Speed: 362.7[samples/s]
+2022-04-22 14:40:47,303 reid_baseline.train INFO: ----------
+2022-04-22 14:40:51,448 reid_baseline.train INFO: Epoch[77] Iteration[20/183] Loss: 0.062, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:40:54,984 reid_baseline.train INFO: Epoch[77] Iteration[40/183] Loss: 0.060, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:40:58,526 reid_baseline.train INFO: Epoch[77] Iteration[60/183] Loss: 0.056, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:41:02,074 reid_baseline.train INFO: Epoch[77] Iteration[80/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:41:05,651 reid_baseline.train INFO: Epoch[77] Iteration[100/183] Loss: 0.049, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:41:09,186 reid_baseline.train INFO: Epoch[77] Iteration[120/183] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:41:12,773 reid_baseline.train INFO: Epoch[77] Iteration[140/183] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:41:16,341 reid_baseline.train INFO: Epoch[77] Iteration[160/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:41:19,890 reid_baseline.train INFO: Epoch[77] Iteration[180/183] Loss: 0.034, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:41:20,537 reid_baseline.train INFO: Epoch 77 done. Time per batch: 32.228[s] Speed: 363.4[samples/s]
+2022-04-22 14:41:20,538 reid_baseline.train INFO: ----------
+2022-04-22 14:41:24,783 reid_baseline.train INFO: Epoch[78] Iteration[20/184] Loss: 0.056, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:41:28,345 reid_baseline.train INFO: Epoch[78] Iteration[40/184] Loss: 0.056, Acc: 0.998, Base Lr: 3.50e-06
+2022-04-22 14:41:31,928 reid_baseline.train INFO: Epoch[78] Iteration[60/184] Loss: 0.054, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:41:35,483 reid_baseline.train INFO: Epoch[78] Iteration[80/184] Loss: 0.051, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:41:39,062 reid_baseline.train INFO: Epoch[78] Iteration[100/184] Loss: 0.049, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:41:42,645 reid_baseline.train INFO: Epoch[78] Iteration[120/184] Loss: 0.046, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:41:46,230 reid_baseline.train INFO: Epoch[78] Iteration[140/184] Loss: 0.041, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:41:49,768 reid_baseline.train INFO: Epoch[78] Iteration[160/184] Loss: 0.036, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:41:53,317 reid_baseline.train INFO: Epoch[78] Iteration[180/184] Loss: 0.032, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:41:54,156 reid_baseline.train INFO: Epoch 78 done. Time per batch: 32.502[s] Speed: 362.3[samples/s]
+2022-04-22 14:41:54,157 reid_baseline.train INFO: ----------
+2022-04-22 14:41:58,339 reid_baseline.train INFO: Epoch[79] Iteration[20/184] Loss: 0.053, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:01,895 reid_baseline.train INFO: Epoch[79] Iteration[40/184] Loss: 0.054, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:05,433 reid_baseline.train INFO: Epoch[79] Iteration[60/184] Loss: 0.053, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:09,015 reid_baseline.train INFO: Epoch[79] Iteration[80/184] Loss: 0.050, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:12,569 reid_baseline.train INFO: Epoch[79] Iteration[100/184] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:16,125 reid_baseline.train INFO: Epoch[79] Iteration[120/184] Loss: 0.045, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:42:19,693 reid_baseline.train INFO: Epoch[79] Iteration[140/184] Loss: 0.042, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:42:23,309 reid_baseline.train INFO: Epoch[79] Iteration[160/184] Loss: 0.039, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:26,880 reid_baseline.train INFO: Epoch[79] Iteration[180/184] Loss: 0.033, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:27,726 reid_baseline.train INFO: Epoch 79 done. Time per batch: 32.533[s] Speed: 362.0[samples/s]
+2022-04-22 14:42:27,726 reid_baseline.train INFO: ----------
+2022-04-22 14:42:31,893 reid_baseline.train INFO: Epoch[80] Iteration[20/183] Loss: 0.066, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:35,459 reid_baseline.train INFO: Epoch[80] Iteration[40/183] Loss: 0.061, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:39,052 reid_baseline.train INFO: Epoch[80] Iteration[60/183] Loss: 0.059, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:42,616 reid_baseline.train INFO: Epoch[80] Iteration[80/183] Loss: 0.054, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:46,169 reid_baseline.train INFO: Epoch[80] Iteration[100/183] Loss: 0.050, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:49,718 reid_baseline.train INFO: Epoch[80] Iteration[120/183] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:53,264 reid_baseline.train INFO: Epoch[80] Iteration[140/183] Loss: 0.042, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:42:56,803 reid_baseline.train INFO: Epoch[80] Iteration[160/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:43:00,359 reid_baseline.train INFO: Epoch[80] Iteration[180/183] Loss: 0.033, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:43:01,625 reid_baseline.train INFO: Epoch 80 done. Time per batch: 32.297[s] Speed: 362.6[samples/s]
+2022-04-22 14:43:01,625 reid_baseline.train INFO: ----------
+2022-04-22 14:46:19,645 reid_baseline.train INFO: Validation Results - Epoch: 80
+2022-04-22 14:46:19,645 reid_baseline.train INFO: mAP: 73.1%
+2022-04-22 14:46:19,645 reid_baseline.train INFO: CMC curve, Rank-1  :87.4%
+2022-04-22 14:46:19,645 reid_baseline.train INFO: CMC curve, Rank-5  :95.5%
+2022-04-22 14:46:19,645 reid_baseline.train INFO: CMC curve, Rank-10 :97.1%
+2022-04-22 14:46:23,862 reid_baseline.train INFO: Epoch[81] Iteration[20/183] Loss: 0.083, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:46:27,420 reid_baseline.train INFO: Epoch[81] Iteration[40/183] Loss: 0.073, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:46:30,973 reid_baseline.train INFO: Epoch[81] Iteration[60/183] Loss: 0.066, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:46:34,504 reid_baseline.train INFO: Epoch[81] Iteration[80/183] Loss: 0.061, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:46:37,998 reid_baseline.train INFO: Epoch[81] Iteration[100/183] Loss: 0.056, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:46:41,593 reid_baseline.train INFO: Epoch[81] Iteration[120/183] Loss: 0.049, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:46:45,094 reid_baseline.train INFO: Epoch[81] Iteration[140/183] Loss: 0.042, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:46:48,621 reid_baseline.train INFO: Epoch[81] Iteration[160/183] Loss: 0.037, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:46:52,137 reid_baseline.train INFO: Epoch[81] Iteration[180/183] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:46:52,817 reid_baseline.train INFO: Epoch 81 done. Time per batch: 32.089[s] Speed: 365.0[samples/s]
+2022-04-22 14:46:52,817 reid_baseline.train INFO: ----------
+2022-04-22 14:46:56,947 reid_baseline.train INFO: Epoch[82] Iteration[20/183] Loss: 0.056, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:00,498 reid_baseline.train INFO: Epoch[82] Iteration[40/183] Loss: 0.058, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:04,024 reid_baseline.train INFO: Epoch[82] Iteration[60/183] Loss: 0.055, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:07,574 reid_baseline.train INFO: Epoch[82] Iteration[80/183] Loss: 0.050, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:47:11,118 reid_baseline.train INFO: Epoch[82] Iteration[100/183] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:14,650 reid_baseline.train INFO: Epoch[82] Iteration[120/183] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:18,199 reid_baseline.train INFO: Epoch[82] Iteration[140/183] Loss: 0.039, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:21,767 reid_baseline.train INFO: Epoch[82] Iteration[160/183] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:25,283 reid_baseline.train INFO: Epoch[82] Iteration[180/183] Loss: 0.033, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:25,928 reid_baseline.train INFO: Epoch 82 done. Time per batch: 32.091[s] Speed: 365.0[samples/s]
+2022-04-22 14:47:25,928 reid_baseline.train INFO: ----------
+2022-04-22 14:47:30,184 reid_baseline.train INFO: Epoch[83] Iteration[20/184] Loss: 0.053, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:33,785 reid_baseline.train INFO: Epoch[83] Iteration[40/184] Loss: 0.053, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:37,370 reid_baseline.train INFO: Epoch[83] Iteration[60/184] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:40,946 reid_baseline.train INFO: Epoch[83] Iteration[80/184] Loss: 0.049, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:47:44,511 reid_baseline.train INFO: Epoch[83] Iteration[100/184] Loss: 0.047, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:47:48,070 reid_baseline.train INFO: Epoch[83] Iteration[120/184] Loss: 0.044, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:47:51,628 reid_baseline.train INFO: Epoch[83] Iteration[140/184] Loss: 0.040, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:55,185 reid_baseline.train INFO: Epoch[83] Iteration[160/184] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:58,742 reid_baseline.train INFO: Epoch[83] Iteration[180/184] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:47:59,607 reid_baseline.train INFO: Epoch 83 done. Time per batch: 32.571[s] Speed: 361.5[samples/s]
+2022-04-22 14:47:59,607 reid_baseline.train INFO: ----------
+2022-04-22 14:48:03,786 reid_baseline.train INFO: Epoch[84] Iteration[20/184] Loss: 0.040, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:07,331 reid_baseline.train INFO: Epoch[84] Iteration[40/184] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:10,886 reid_baseline.train INFO: Epoch[84] Iteration[60/184] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:14,428 reid_baseline.train INFO: Epoch[84] Iteration[80/184] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:17,971 reid_baseline.train INFO: Epoch[84] Iteration[100/184] Loss: 0.044, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:21,520 reid_baseline.train INFO: Epoch[84] Iteration[120/184] Loss: 0.042, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:25,090 reid_baseline.train INFO: Epoch[84] Iteration[140/184] Loss: 0.039, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:28,652 reid_baseline.train INFO: Epoch[84] Iteration[160/184] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:32,193 reid_baseline.train INFO: Epoch[84] Iteration[180/184] Loss: 0.032, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:33,027 reid_baseline.train INFO: Epoch 84 done. Time per batch: 32.433[s] Speed: 363.1[samples/s]
+2022-04-22 14:48:33,027 reid_baseline.train INFO: ----------
+2022-04-22 14:48:37,226 reid_baseline.train INFO: Epoch[85] Iteration[20/183] Loss: 0.076, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:40,833 reid_baseline.train INFO: Epoch[85] Iteration[40/183] Loss: 0.070, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:44,389 reid_baseline.train INFO: Epoch[85] Iteration[60/183] Loss: 0.062, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:47,936 reid_baseline.train INFO: Epoch[85] Iteration[80/183] Loss: 0.059, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:51,473 reid_baseline.train INFO: Epoch[85] Iteration[100/183] Loss: 0.054, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:55,006 reid_baseline.train INFO: Epoch[85] Iteration[120/183] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:48:58,549 reid_baseline.train INFO: Epoch[85] Iteration[140/183] Loss: 0.044, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:02,112 reid_baseline.train INFO: Epoch[85] Iteration[160/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:05,650 reid_baseline.train INFO: Epoch[85] Iteration[180/183] Loss: 0.032, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:06,318 reid_baseline.train INFO: Epoch 85 done. Time per batch: 32.268[s] Speed: 363.0[samples/s]
+2022-04-22 14:49:06,318 reid_baseline.train INFO: ----------
+2022-04-22 14:49:10,498 reid_baseline.train INFO: Epoch[86] Iteration[20/183] Loss: 0.073, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:49:14,074 reid_baseline.train INFO: Epoch[86] Iteration[40/183] Loss: 0.066, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:17,648 reid_baseline.train INFO: Epoch[86] Iteration[60/183] Loss: 0.061, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:49:21,259 reid_baseline.train INFO: Epoch[86] Iteration[80/183] Loss: 0.056, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:24,858 reid_baseline.train INFO: Epoch[86] Iteration[100/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:28,439 reid_baseline.train INFO: Epoch[86] Iteration[120/183] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:32,005 reid_baseline.train INFO: Epoch[86] Iteration[140/183] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:35,589 reid_baseline.train INFO: Epoch[86] Iteration[160/183] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:39,173 reid_baseline.train INFO: Epoch[86] Iteration[180/183] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:39,831 reid_baseline.train INFO: Epoch 86 done. Time per batch: 32.377[s] Speed: 361.7[samples/s]
+2022-04-22 14:49:39,831 reid_baseline.train INFO: ----------
+2022-04-22 14:49:43,984 reid_baseline.train INFO: Epoch[87] Iteration[20/184] Loss: 0.054, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:47,535 reid_baseline.train INFO: Epoch[87] Iteration[40/184] Loss: 0.055, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:51,086 reid_baseline.train INFO: Epoch[87] Iteration[60/184] Loss: 0.053, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:54,642 reid_baseline.train INFO: Epoch[87] Iteration[80/184] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:49:58,192 reid_baseline.train INFO: Epoch[87] Iteration[100/184] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:01,761 reid_baseline.train INFO: Epoch[87] Iteration[120/184] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:05,304 reid_baseline.train INFO: Epoch[87] Iteration[140/184] Loss: 0.039, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:08,883 reid_baseline.train INFO: Epoch[87] Iteration[160/184] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:12,428 reid_baseline.train INFO: Epoch[87] Iteration[180/184] Loss: 0.032, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:13,267 reid_baseline.train INFO: Epoch 87 done. Time per batch: 32.436[s] Speed: 363.1[samples/s]
+2022-04-22 14:50:13,267 reid_baseline.train INFO: ----------
+2022-04-22 14:50:17,487 reid_baseline.train INFO: Epoch[88] Iteration[20/183] Loss: 0.051, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:21,043 reid_baseline.train INFO: Epoch[88] Iteration[40/183] Loss: 0.055, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:24,611 reid_baseline.train INFO: Epoch[88] Iteration[60/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:28,167 reid_baseline.train INFO: Epoch[88] Iteration[80/183] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:31,723 reid_baseline.train INFO: Epoch[88] Iteration[100/183] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:35,298 reid_baseline.train INFO: Epoch[88] Iteration[120/183] Loss: 0.042, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:38,906 reid_baseline.train INFO: Epoch[88] Iteration[140/183] Loss: 0.039, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:42,471 reid_baseline.train INFO: Epoch[88] Iteration[160/183] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:46,011 reid_baseline.train INFO: Epoch[88] Iteration[180/183] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:46,674 reid_baseline.train INFO: Epoch 88 done. Time per batch: 32.358[s] Speed: 362.0[samples/s]
+2022-04-22 14:50:46,675 reid_baseline.train INFO: ----------
+2022-04-22 14:50:50,955 reid_baseline.train INFO: Epoch[89] Iteration[20/183] Loss: 0.093, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:54,555 reid_baseline.train INFO: Epoch[89] Iteration[40/183] Loss: 0.080, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:50:58,139 reid_baseline.train INFO: Epoch[89] Iteration[60/183] Loss: 0.069, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:01,770 reid_baseline.train INFO: Epoch[89] Iteration[80/183] Loss: 0.060, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:05,353 reid_baseline.train INFO: Epoch[89] Iteration[100/183] Loss: 0.058, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:08,953 reid_baseline.train INFO: Epoch[89] Iteration[120/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:12,524 reid_baseline.train INFO: Epoch[89] Iteration[140/183] Loss: 0.044, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:16,147 reid_baseline.train INFO: Epoch[89] Iteration[160/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:19,773 reid_baseline.train INFO: Epoch[89] Iteration[180/183] Loss: 0.033, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:20,450 reid_baseline.train INFO: Epoch 89 done. Time per batch: 32.560[s] Speed: 359.7[samples/s]
+2022-04-22 14:51:20,451 reid_baseline.train INFO: ----------
+2022-04-22 14:51:24,653 reid_baseline.train INFO: Epoch[90] Iteration[20/184] Loss: 0.086, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:28,216 reid_baseline.train INFO: Epoch[90] Iteration[40/184] Loss: 0.074, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:31,796 reid_baseline.train INFO: Epoch[90] Iteration[60/184] Loss: 0.066, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:35,358 reid_baseline.train INFO: Epoch[90] Iteration[80/184] Loss: 0.058, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:38,908 reid_baseline.train INFO: Epoch[90] Iteration[100/184] Loss: 0.053, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:51:42,471 reid_baseline.train INFO: Epoch[90] Iteration[120/184] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:46,037 reid_baseline.train INFO: Epoch[90] Iteration[140/184] Loss: 0.044, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:49,587 reid_baseline.train INFO: Epoch[90] Iteration[160/184] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:53,138 reid_baseline.train INFO: Epoch[90] Iteration[180/184] Loss: 0.033, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:51:53,985 reid_baseline.train INFO: Epoch 90 done. Time per batch: 32.505[s] Speed: 362.3[samples/s]
+2022-04-22 14:51:53,985 reid_baseline.train INFO: ----------
+2022-04-22 14:51:58,192 reid_baseline.train INFO: Epoch[91] Iteration[20/183] Loss: 0.051, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:01,750 reid_baseline.train INFO: Epoch[91] Iteration[40/183] Loss: 0.051, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:05,341 reid_baseline.train INFO: Epoch[91] Iteration[60/183] Loss: 0.051, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:52:08,904 reid_baseline.train INFO: Epoch[91] Iteration[80/183] Loss: 0.048, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:52:12,474 reid_baseline.train INFO: Epoch[91] Iteration[100/183] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:16,031 reid_baseline.train INFO: Epoch[91] Iteration[120/183] Loss: 0.042, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:19,586 reid_baseline.train INFO: Epoch[91] Iteration[140/183] Loss: 0.040, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:23,140 reid_baseline.train INFO: Epoch[91] Iteration[160/183] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:26,693 reid_baseline.train INFO: Epoch[91] Iteration[180/183] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:27,349 reid_baseline.train INFO: Epoch 91 done. Time per batch: 32.350[s] Speed: 362.0[samples/s]
+2022-04-22 14:52:27,350 reid_baseline.train INFO: ----------
+2022-04-22 14:52:31,597 reid_baseline.train INFO: Epoch[92] Iteration[20/183] Loss: 0.079, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:35,142 reid_baseline.train INFO: Epoch[92] Iteration[40/183] Loss: 0.070, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:38,739 reid_baseline.train INFO: Epoch[92] Iteration[60/183] Loss: 0.063, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:42,293 reid_baseline.train INFO: Epoch[92] Iteration[80/183] Loss: 0.057, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:45,861 reid_baseline.train INFO: Epoch[92] Iteration[100/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:49,425 reid_baseline.train INFO: Epoch[92] Iteration[120/183] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:52,993 reid_baseline.train INFO: Epoch[92] Iteration[140/183] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:52:56,548 reid_baseline.train INFO: Epoch[92] Iteration[160/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:00,087 reid_baseline.train INFO: Epoch[92] Iteration[180/183] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:00,766 reid_baseline.train INFO: Epoch 92 done. Time per batch: 32.369[s] Speed: 361.8[samples/s]
+2022-04-22 14:53:00,767 reid_baseline.train INFO: ----------
+2022-04-22 14:53:04,942 reid_baseline.train INFO: Epoch[93] Iteration[20/183] Loss: 0.063, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:08,511 reid_baseline.train INFO: Epoch[93] Iteration[40/183] Loss: 0.059, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:53:12,090 reid_baseline.train INFO: Epoch[93] Iteration[60/183] Loss: 0.054, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:15,619 reid_baseline.train INFO: Epoch[93] Iteration[80/183] Loss: 0.051, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:19,206 reid_baseline.train INFO: Epoch[93] Iteration[100/183] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:22,772 reid_baseline.train INFO: Epoch[93] Iteration[120/183] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:26,350 reid_baseline.train INFO: Epoch[93] Iteration[140/183] Loss: 0.040, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:29,922 reid_baseline.train INFO: Epoch[93] Iteration[160/183] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:33,459 reid_baseline.train INFO: Epoch[93] Iteration[180/183] Loss: 0.032, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:34,127 reid_baseline.train INFO: Epoch 93 done. Time per batch: 32.333[s] Speed: 362.2[samples/s]
+2022-04-22 14:53:34,127 reid_baseline.train INFO: ----------
+2022-04-22 14:53:38,357 reid_baseline.train INFO: Epoch[94] Iteration[20/183] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:41,960 reid_baseline.train INFO: Epoch[94] Iteration[40/183] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:45,582 reid_baseline.train INFO: Epoch[94] Iteration[60/183] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:49,156 reid_baseline.train INFO: Epoch[94] Iteration[80/183] Loss: 0.044, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:52,738 reid_baseline.train INFO: Epoch[94] Iteration[100/183] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:56,321 reid_baseline.train INFO: Epoch[94] Iteration[120/183] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:53:59,880 reid_baseline.train INFO: Epoch[94] Iteration[140/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:03,454 reid_baseline.train INFO: Epoch[94] Iteration[160/183] Loss: 0.035, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:06,984 reid_baseline.train INFO: Epoch[94] Iteration[180/183] Loss: 0.030, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:07,646 reid_baseline.train INFO: Epoch 94 done. Time per batch: 32.456[s] Speed: 360.9[samples/s]
+2022-04-22 14:54:07,646 reid_baseline.train INFO: ----------
+2022-04-22 14:54:11,813 reid_baseline.train INFO: Epoch[95] Iteration[20/182] Loss: 0.240, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:15,391 reid_baseline.train INFO: Epoch[95] Iteration[40/182] Loss: 0.177, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:18,951 reid_baseline.train INFO: Epoch[95] Iteration[60/182] Loss: 0.133, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:22,537 reid_baseline.train INFO: Epoch[95] Iteration[80/182] Loss: 0.103, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:26,113 reid_baseline.train INFO: Epoch[95] Iteration[100/182] Loss: 0.082, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:29,658 reid_baseline.train INFO: Epoch[95] Iteration[120/182] Loss: 0.068, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:33,208 reid_baseline.train INFO: Epoch[95] Iteration[140/182] Loss: 0.057, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:36,751 reid_baseline.train INFO: Epoch[95] Iteration[160/182] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:40,309 reid_baseline.train INFO: Epoch[95] Iteration[180/182] Loss: 0.040, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:40,793 reid_baseline.train INFO: Epoch 95 done. Time per batch: 32.115[s] Speed: 362.7[samples/s]
+2022-04-22 14:54:40,794 reid_baseline.train INFO: ----------
+2022-04-22 14:54:45,027 reid_baseline.train INFO: Epoch[96] Iteration[20/184] Loss: 0.071, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:48,592 reid_baseline.train INFO: Epoch[96] Iteration[40/184] Loss: 0.065, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:52,158 reid_baseline.train INFO: Epoch[96] Iteration[60/184] Loss: 0.060, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:55,693 reid_baseline.train INFO: Epoch[96] Iteration[80/184] Loss: 0.055, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:54:59,237 reid_baseline.train INFO: Epoch[96] Iteration[100/184] Loss: 0.050, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:55:02,780 reid_baseline.train INFO: Epoch[96] Iteration[120/184] Loss: 0.044, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:06,316 reid_baseline.train INFO: Epoch[96] Iteration[140/184] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:09,849 reid_baseline.train INFO: Epoch[96] Iteration[160/184] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:13,374 reid_baseline.train INFO: Epoch[96] Iteration[180/184] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:14,199 reid_baseline.train INFO: Epoch 96 done. Time per batch: 32.434[s] Speed: 363.1[samples/s]
+2022-04-22 14:55:14,200 reid_baseline.train INFO: ----------
+2022-04-22 14:55:18,404 reid_baseline.train INFO: Epoch[97] Iteration[20/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:22,008 reid_baseline.train INFO: Epoch[97] Iteration[40/183] Loss: 0.053, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:25,558 reid_baseline.train INFO: Epoch[97] Iteration[60/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:29,108 reid_baseline.train INFO: Epoch[97] Iteration[80/183] Loss: 0.050, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:32,656 reid_baseline.train INFO: Epoch[97] Iteration[100/183] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:36,212 reid_baseline.train INFO: Epoch[97] Iteration[120/183] Loss: 0.044, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:39,778 reid_baseline.train INFO: Epoch[97] Iteration[140/183] Loss: 0.039, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:43,342 reid_baseline.train INFO: Epoch[97] Iteration[160/183] Loss: 0.034, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:46,883 reid_baseline.train INFO: Epoch[97] Iteration[180/183] Loss: 0.032, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:47,517 reid_baseline.train INFO: Epoch 97 done. Time per batch: 32.317[s] Speed: 362.4[samples/s]
+2022-04-22 14:55:47,517 reid_baseline.train INFO: ----------
+2022-04-22 14:55:51,658 reid_baseline.train INFO: Epoch[98] Iteration[20/183] Loss: 0.057, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:55,201 reid_baseline.train INFO: Epoch[98] Iteration[40/183] Loss: 0.054, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:55:58,792 reid_baseline.train INFO: Epoch[98] Iteration[60/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:02,366 reid_baseline.train INFO: Epoch[98] Iteration[80/183] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:05,946 reid_baseline.train INFO: Epoch[98] Iteration[100/183] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:09,524 reid_baseline.train INFO: Epoch[98] Iteration[120/183] Loss: 0.042, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:13,088 reid_baseline.train INFO: Epoch[98] Iteration[140/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:16,628 reid_baseline.train INFO: Epoch[98] Iteration[160/183] Loss: 0.035, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:20,153 reid_baseline.train INFO: Epoch[98] Iteration[180/183] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:20,803 reid_baseline.train INFO: Epoch 98 done. Time per batch: 32.264[s] Speed: 363.0[samples/s]
+2022-04-22 14:56:20,804 reid_baseline.train INFO: ----------
+2022-04-22 14:56:24,921 reid_baseline.train INFO: Epoch[99] Iteration[20/184] Loss: 0.075, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:28,449 reid_baseline.train INFO: Epoch[99] Iteration[40/184] Loss: 0.069, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:31,977 reid_baseline.train INFO: Epoch[99] Iteration[60/184] Loss: 0.061, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:35,504 reid_baseline.train INFO: Epoch[99] Iteration[80/184] Loss: 0.056, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:39,034 reid_baseline.train INFO: Epoch[99] Iteration[100/184] Loss: 0.051, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:42,564 reid_baseline.train INFO: Epoch[99] Iteration[120/184] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:46,096 reid_baseline.train INFO: Epoch[99] Iteration[140/184] Loss: 0.040, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:49,635 reid_baseline.train INFO: Epoch[99] Iteration[160/184] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:53,166 reid_baseline.train INFO: Epoch[99] Iteration[180/184] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:56:53,991 reid_baseline.train INFO: Epoch 99 done. Time per batch: 32.236[s] Speed: 365.3[samples/s]
+2022-04-22 14:56:53,992 reid_baseline.train INFO: ----------
+2022-04-22 14:56:58,159 reid_baseline.train INFO: Epoch[100] Iteration[20/183] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:01,723 reid_baseline.train INFO: Epoch[100] Iteration[40/183] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:05,241 reid_baseline.train INFO: Epoch[100] Iteration[60/183] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:08,777 reid_baseline.train INFO: Epoch[100] Iteration[80/183] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:12,296 reid_baseline.train INFO: Epoch[100] Iteration[100/183] Loss: 0.044, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:15,857 reid_baseline.train INFO: Epoch[100] Iteration[120/183] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:19,400 reid_baseline.train INFO: Epoch[100] Iteration[140/183] Loss: 0.039, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:22,964 reid_baseline.train INFO: Epoch[100] Iteration[160/183] Loss: 0.035, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:26,496 reid_baseline.train INFO: Epoch[100] Iteration[180/183] Loss: 0.030, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:27,147 reid_baseline.train INFO: Epoch 100 done. Time per batch: 32.194[s] Speed: 363.8[samples/s]
+2022-04-22 14:57:27,147 reid_baseline.train INFO: ----------
+2022-04-22 14:57:31,311 reid_baseline.train INFO: Epoch[101] Iteration[20/183] Loss: 0.059, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:34,868 reid_baseline.train INFO: Epoch[101] Iteration[40/183] Loss: 0.055, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:38,427 reid_baseline.train INFO: Epoch[101] Iteration[60/183] Loss: 0.051, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:41,969 reid_baseline.train INFO: Epoch[101] Iteration[80/183] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:45,508 reid_baseline.train INFO: Epoch[101] Iteration[100/183] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:49,055 reid_baseline.train INFO: Epoch[101] Iteration[120/183] Loss: 0.040, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:52,598 reid_baseline.train INFO: Epoch[101] Iteration[140/183] Loss: 0.037, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:56,138 reid_baseline.train INFO: Epoch[101] Iteration[160/183] Loss: 0.034, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:57:59,683 reid_baseline.train INFO: Epoch[101] Iteration[180/183] Loss: 0.029, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:58:00,345 reid_baseline.train INFO: Epoch 101 done. Time per batch: 32.179[s] Speed: 364.0[samples/s]
+2022-04-22 14:58:00,346 reid_baseline.train INFO: ----------
+2022-04-22 14:58:04,502 reid_baseline.train INFO: Epoch[102] Iteration[20/183] Loss: 0.066, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:58:08,052 reid_baseline.train INFO: Epoch[102] Iteration[40/183] Loss: 0.059, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:58:11,604 reid_baseline.train INFO: Epoch[102] Iteration[60/183] Loss: 0.055, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:58:15,130 reid_baseline.train INFO: Epoch[102] Iteration[80/183] Loss: 0.050, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:58:18,677 reid_baseline.train INFO: Epoch[102] Iteration[100/183] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:58:22,229 reid_baseline.train INFO: Epoch[102] Iteration[120/183] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:58:25,775 reid_baseline.train INFO: Epoch[102] Iteration[140/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:58:29,309 reid_baseline.train INFO: Epoch[102] Iteration[160/183] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:58:32,840 reid_baseline.train INFO: Epoch[102] Iteration[180/183] Loss: 0.030, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:58:33,496 reid_baseline.train INFO: Epoch 102 done. Time per batch: 32.182[s] Speed: 363.9[samples/s]
+2022-04-22 14:58:33,497 reid_baseline.train INFO: ----------
+2022-04-22 14:58:37,675 reid_baseline.train INFO: Epoch[103] Iteration[20/184] Loss: 0.108, Acc: 0.989, Base Lr: 3.50e-06
+2022-04-22 14:58:41,207 reid_baseline.train INFO: Epoch[103] Iteration[40/184] Loss: 0.090, Acc: 0.993, Base Lr: 3.50e-06
+2022-04-22 14:58:44,714 reid_baseline.train INFO: Epoch[103] Iteration[60/184] Loss: 0.075, Acc: 0.995, Base Lr: 3.50e-06
+2022-04-22 14:58:48,240 reid_baseline.train INFO: Epoch[103] Iteration[80/184] Loss: 0.064, Acc: 0.996, Base Lr: 3.50e-06
+2022-04-22 14:58:51,775 reid_baseline.train INFO: Epoch[103] Iteration[100/184] Loss: 0.055, Acc: 0.998, Base Lr: 3.50e-06
+2022-04-22 14:58:55,325 reid_baseline.train INFO: Epoch[103] Iteration[120/184] Loss: 0.049, Acc: 0.998, Base Lr: 3.50e-06
+2022-04-22 14:58:58,854 reid_baseline.train INFO: Epoch[103] Iteration[140/184] Loss: 0.043, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:59:02,405 reid_baseline.train INFO: Epoch[103] Iteration[160/184] Loss: 0.038, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 14:59:05,942 reid_baseline.train INFO: Epoch[103] Iteration[180/184] Loss: 0.033, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:06,787 reid_baseline.train INFO: Epoch 103 done. Time per batch: 32.325[s] Speed: 364.3[samples/s]
+2022-04-22 14:59:06,788 reid_baseline.train INFO: ----------
+2022-04-22 14:59:11,031 reid_baseline.train INFO: Epoch[104] Iteration[20/184] Loss: 0.049, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:14,621 reid_baseline.train INFO: Epoch[104] Iteration[40/184] Loss: 0.049, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:18,199 reid_baseline.train INFO: Epoch[104] Iteration[60/184] Loss: 0.050, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:21,752 reid_baseline.train INFO: Epoch[104] Iteration[80/184] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:25,296 reid_baseline.train INFO: Epoch[104] Iteration[100/184] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:28,854 reid_baseline.train INFO: Epoch[104] Iteration[120/184] Loss: 0.042, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:32,408 reid_baseline.train INFO: Epoch[104] Iteration[140/184] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:35,962 reid_baseline.train INFO: Epoch[104] Iteration[160/184] Loss: 0.034, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:39,512 reid_baseline.train INFO: Epoch[104] Iteration[180/184] Loss: 0.030, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:40,339 reid_baseline.train INFO: Epoch 104 done. Time per batch: 32.510[s] Speed: 362.2[samples/s]
+2022-04-22 14:59:40,339 reid_baseline.train INFO: ----------
+2022-04-22 14:59:44,503 reid_baseline.train INFO: Epoch[105] Iteration[20/184] Loss: 0.073, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:48,096 reid_baseline.train INFO: Epoch[105] Iteration[40/184] Loss: 0.063, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:51,648 reid_baseline.train INFO: Epoch[105] Iteration[60/184] Loss: 0.056, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:55,199 reid_baseline.train INFO: Epoch[105] Iteration[80/184] Loss: 0.051, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 14:59:58,760 reid_baseline.train INFO: Epoch[105] Iteration[100/184] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:02,306 reid_baseline.train INFO: Epoch[105] Iteration[120/184] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:05,895 reid_baseline.train INFO: Epoch[105] Iteration[140/184] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:09,464 reid_baseline.train INFO: Epoch[105] Iteration[160/184] Loss: 0.035, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:13,011 reid_baseline.train INFO: Epoch[105] Iteration[180/184] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:13,847 reid_baseline.train INFO: Epoch 105 done. Time per batch: 32.466[s] Speed: 362.7[samples/s]
+2022-04-22 15:00:13,847 reid_baseline.train INFO: ----------
+2022-04-22 15:00:18,034 reid_baseline.train INFO: Epoch[106] Iteration[20/184] Loss: 0.087, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:21,604 reid_baseline.train INFO: Epoch[106] Iteration[40/184] Loss: 0.072, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 15:00:25,174 reid_baseline.train INFO: Epoch[106] Iteration[60/184] Loss: 0.064, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:28,734 reid_baseline.train INFO: Epoch[106] Iteration[80/184] Loss: 0.057, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:32,302 reid_baseline.train INFO: Epoch[106] Iteration[100/184] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:35,861 reid_baseline.train INFO: Epoch[106] Iteration[120/184] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:39,422 reid_baseline.train INFO: Epoch[106] Iteration[140/184] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:42,988 reid_baseline.train INFO: Epoch[106] Iteration[160/184] Loss: 0.037, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:46,537 reid_baseline.train INFO: Epoch[106] Iteration[180/184] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:47,377 reid_baseline.train INFO: Epoch 106 done. Time per batch: 32.458[s] Speed: 362.8[samples/s]
+2022-04-22 15:00:47,378 reid_baseline.train INFO: ----------
+2022-04-22 15:00:51,596 reid_baseline.train INFO: Epoch[107] Iteration[20/184] Loss: 0.074, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:55,155 reid_baseline.train INFO: Epoch[107] Iteration[40/184] Loss: 0.066, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:00:58,741 reid_baseline.train INFO: Epoch[107] Iteration[60/184] Loss: 0.059, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:02,302 reid_baseline.train INFO: Epoch[107] Iteration[80/184] Loss: 0.053, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:05,853 reid_baseline.train INFO: Epoch[107] Iteration[100/184] Loss: 0.049, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:09,426 reid_baseline.train INFO: Epoch[107] Iteration[120/184] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:12,980 reid_baseline.train INFO: Epoch[107] Iteration[140/184] Loss: 0.040, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:16,536 reid_baseline.train INFO: Epoch[107] Iteration[160/184] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:20,090 reid_baseline.train INFO: Epoch[107] Iteration[180/184] Loss: 0.032, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:20,930 reid_baseline.train INFO: Epoch 107 done. Time per batch: 32.518[s] Speed: 362.1[samples/s]
+2022-04-22 15:01:20,930 reid_baseline.train INFO: ----------
+2022-04-22 15:01:25,122 reid_baseline.train INFO: Epoch[108] Iteration[20/183] Loss: 0.061, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:28,696 reid_baseline.train INFO: Epoch[108] Iteration[40/183] Loss: 0.057, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:32,284 reid_baseline.train INFO: Epoch[108] Iteration[60/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:35,835 reid_baseline.train INFO: Epoch[108] Iteration[80/183] Loss: 0.052, Acc: 0.999, Base Lr: 3.50e-06
+2022-04-22 15:01:39,390 reid_baseline.train INFO: Epoch[108] Iteration[100/183] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:42,940 reid_baseline.train INFO: Epoch[108] Iteration[120/183] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:46,491 reid_baseline.train INFO: Epoch[108] Iteration[140/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:50,029 reid_baseline.train INFO: Epoch[108] Iteration[160/183] Loss: 0.034, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:53,580 reid_baseline.train INFO: Epoch[108] Iteration[180/183] Loss: 0.029, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:01:54,243 reid_baseline.train INFO: Epoch 108 done. Time per batch: 32.287[s] Speed: 362.7[samples/s]
+2022-04-22 15:01:54,244 reid_baseline.train INFO: ----------
+2022-04-22 15:01:58,391 reid_baseline.train INFO: Epoch[109] Iteration[20/184] Loss: 0.070, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:01,953 reid_baseline.train INFO: Epoch[109] Iteration[40/184] Loss: 0.064, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:05,505 reid_baseline.train INFO: Epoch[109] Iteration[60/184] Loss: 0.057, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:09,058 reid_baseline.train INFO: Epoch[109] Iteration[80/184] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:12,607 reid_baseline.train INFO: Epoch[109] Iteration[100/184] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:16,160 reid_baseline.train INFO: Epoch[109] Iteration[120/184] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:19,716 reid_baseline.train INFO: Epoch[109] Iteration[140/184] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:23,257 reid_baseline.train INFO: Epoch[109] Iteration[160/184] Loss: 0.034, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:26,806 reid_baseline.train INFO: Epoch[109] Iteration[180/184] Loss: 0.029, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:27,644 reid_baseline.train INFO: Epoch 109 done. Time per batch: 32.373[s] Speed: 363.8[samples/s]
+2022-04-22 15:02:27,645 reid_baseline.train INFO: ----------
+2022-04-22 15:02:31,846 reid_baseline.train INFO: Epoch[110] Iteration[20/183] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:35,401 reid_baseline.train INFO: Epoch[110] Iteration[40/183] Loss: 0.050, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:38,947 reid_baseline.train INFO: Epoch[110] Iteration[60/183] Loss: 0.049, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:42,522 reid_baseline.train INFO: Epoch[110] Iteration[80/183] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:46,085 reid_baseline.train INFO: Epoch[110] Iteration[100/183] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:49,655 reid_baseline.train INFO: Epoch[110] Iteration[120/183] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:53,209 reid_baseline.train INFO: Epoch[110] Iteration[140/183] Loss: 0.040, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:02:56,757 reid_baseline.train INFO: Epoch[110] Iteration[160/183] Loss: 0.035, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:00,322 reid_baseline.train INFO: Epoch[110] Iteration[180/183] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:00,991 reid_baseline.train INFO: Epoch 110 done. Time per batch: 32.302[s] Speed: 362.6[samples/s]
+2022-04-22 15:03:00,991 reid_baseline.train INFO: ----------
+2022-04-22 15:03:05,178 reid_baseline.train INFO: Epoch[111] Iteration[20/183] Loss: 0.061, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:08,735 reid_baseline.train INFO: Epoch[111] Iteration[40/183] Loss: 0.060, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:12,304 reid_baseline.train INFO: Epoch[111] Iteration[60/183] Loss: 0.056, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:15,853 reid_baseline.train INFO: Epoch[111] Iteration[80/183] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:19,419 reid_baseline.train INFO: Epoch[111] Iteration[100/183] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:22,970 reid_baseline.train INFO: Epoch[111] Iteration[120/183] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:26,550 reid_baseline.train INFO: Epoch[111] Iteration[140/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:30,105 reid_baseline.train INFO: Epoch[111] Iteration[160/183] Loss: 0.034, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:33,642 reid_baseline.train INFO: Epoch[111] Iteration[180/183] Loss: 0.029, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:34,333 reid_baseline.train INFO: Epoch 111 done. Time per batch: 32.288[s] Speed: 362.7[samples/s]
+2022-04-22 15:03:34,333 reid_baseline.train INFO: ----------
+2022-04-22 15:03:38,538 reid_baseline.train INFO: Epoch[112] Iteration[20/183] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:42,102 reid_baseline.train INFO: Epoch[112] Iteration[40/183] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:45,678 reid_baseline.train INFO: Epoch[112] Iteration[60/183] Loss: 0.044, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:49,208 reid_baseline.train INFO: Epoch[112] Iteration[80/183] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:52,751 reid_baseline.train INFO: Epoch[112] Iteration[100/183] Loss: 0.044, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:56,301 reid_baseline.train INFO: Epoch[112] Iteration[120/183] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:03:59,879 reid_baseline.train INFO: Epoch[112] Iteration[140/183] Loss: 0.040, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:03,418 reid_baseline.train INFO: Epoch[112] Iteration[160/183] Loss: 0.035, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:06,964 reid_baseline.train INFO: Epoch[112] Iteration[180/183] Loss: 0.030, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:07,635 reid_baseline.train INFO: Epoch 112 done. Time per batch: 32.279[s] Speed: 362.8[samples/s]
+2022-04-22 15:04:07,636 reid_baseline.train INFO: ----------
+2022-04-22 15:04:11,833 reid_baseline.train INFO: Epoch[113] Iteration[20/182] Loss: 0.059, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:15,402 reid_baseline.train INFO: Epoch[113] Iteration[40/182] Loss: 0.057, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:18,961 reid_baseline.train INFO: Epoch[113] Iteration[60/182] Loss: 0.053, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:22,498 reid_baseline.train INFO: Epoch[113] Iteration[80/182] Loss: 0.049, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:26,076 reid_baseline.train INFO: Epoch[113] Iteration[100/182] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:29,643 reid_baseline.train INFO: Epoch[113] Iteration[120/182] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:33,201 reid_baseline.train INFO: Epoch[113] Iteration[140/182] Loss: 0.037, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:36,781 reid_baseline.train INFO: Epoch[113] Iteration[160/182] Loss: 0.035, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:40,323 reid_baseline.train INFO: Epoch[113] Iteration[180/182] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:40,807 reid_baseline.train INFO: Epoch 113 done. Time per batch: 32.116[s] Speed: 362.7[samples/s]
+2022-04-22 15:04:40,808 reid_baseline.train INFO: ----------
+2022-04-22 15:04:45,006 reid_baseline.train INFO: Epoch[114] Iteration[20/183] Loss: 0.057, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:48,588 reid_baseline.train INFO: Epoch[114] Iteration[40/183] Loss: 0.057, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:52,181 reid_baseline.train INFO: Epoch[114] Iteration[60/183] Loss: 0.053, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:55,712 reid_baseline.train INFO: Epoch[114] Iteration[80/183] Loss: 0.051, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:04:59,276 reid_baseline.train INFO: Epoch[114] Iteration[100/183] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:02,848 reid_baseline.train INFO: Epoch[114] Iteration[120/183] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:06,418 reid_baseline.train INFO: Epoch[114] Iteration[140/183] Loss: 0.039, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:09,964 reid_baseline.train INFO: Epoch[114] Iteration[160/183] Loss: 0.035, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:13,502 reid_baseline.train INFO: Epoch[114] Iteration[180/183] Loss: 0.030, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:14,174 reid_baseline.train INFO: Epoch 114 done. Time per batch: 32.291[s] Speed: 362.7[samples/s]
+2022-04-22 15:05:14,174 reid_baseline.train INFO: ----------
+2022-04-22 15:05:18,461 reid_baseline.train INFO: Epoch[115] Iteration[20/183] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:22,041 reid_baseline.train INFO: Epoch[115] Iteration[40/183] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:25,597 reid_baseline.train INFO: Epoch[115] Iteration[60/183] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:29,165 reid_baseline.train INFO: Epoch[115] Iteration[80/183] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:32,713 reid_baseline.train INFO: Epoch[115] Iteration[100/183] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:36,251 reid_baseline.train INFO: Epoch[115] Iteration[120/183] Loss: 0.039, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:39,802 reid_baseline.train INFO: Epoch[115] Iteration[140/183] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:43,359 reid_baseline.train INFO: Epoch[115] Iteration[160/183] Loss: 0.032, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:46,906 reid_baseline.train INFO: Epoch[115] Iteration[180/183] Loss: 0.028, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:47,577 reid_baseline.train INFO: Epoch 115 done. Time per batch: 32.336[s] Speed: 362.2[samples/s]
+2022-04-22 15:05:47,577 reid_baseline.train INFO: ----------
+2022-04-22 15:05:51,725 reid_baseline.train INFO: Epoch[116] Iteration[20/183] Loss: 0.058, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:55,279 reid_baseline.train INFO: Epoch[116] Iteration[40/183] Loss: 0.056, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:05:58,857 reid_baseline.train INFO: Epoch[116] Iteration[60/183] Loss: 0.051, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:02,418 reid_baseline.train INFO: Epoch[116] Iteration[80/183] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:05,966 reid_baseline.train INFO: Epoch[116] Iteration[100/183] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:09,522 reid_baseline.train INFO: Epoch[116] Iteration[120/183] Loss: 0.039, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:13,072 reid_baseline.train INFO: Epoch[116] Iteration[140/183] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:16,619 reid_baseline.train INFO: Epoch[116] Iteration[160/183] Loss: 0.034, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:20,172 reid_baseline.train INFO: Epoch[116] Iteration[180/183] Loss: 0.030, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:20,837 reid_baseline.train INFO: Epoch 116 done. Time per batch: 32.226[s] Speed: 363.4[samples/s]
+2022-04-22 15:06:20,838 reid_baseline.train INFO: ----------
+2022-04-22 15:06:25,027 reid_baseline.train INFO: Epoch[117] Iteration[20/184] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:28,610 reid_baseline.train INFO: Epoch[117] Iteration[40/184] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:32,205 reid_baseline.train INFO: Epoch[117] Iteration[60/184] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:35,757 reid_baseline.train INFO: Epoch[117] Iteration[80/184] Loss: 0.044, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:39,331 reid_baseline.train INFO: Epoch[117] Iteration[100/184] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:42,910 reid_baseline.train INFO: Epoch[117] Iteration[120/184] Loss: 0.039, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:46,477 reid_baseline.train INFO: Epoch[117] Iteration[140/184] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:50,040 reid_baseline.train INFO: Epoch[117] Iteration[160/184] Loss: 0.034, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:53,612 reid_baseline.train INFO: Epoch[117] Iteration[180/184] Loss: 0.029, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:06:54,435 reid_baseline.train INFO: Epoch 117 done. Time per batch: 32.461[s] Speed: 362.8[samples/s]
+2022-04-22 15:06:54,436 reid_baseline.train INFO: ----------
+2022-04-22 15:06:58,623 reid_baseline.train INFO: Epoch[118] Iteration[20/183] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:02,190 reid_baseline.train INFO: Epoch[118] Iteration[40/183] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:05,735 reid_baseline.train INFO: Epoch[118] Iteration[60/183] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:09,288 reid_baseline.train INFO: Epoch[118] Iteration[80/183] Loss: 0.045, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:12,843 reid_baseline.train INFO: Epoch[118] Iteration[100/183] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:16,414 reid_baseline.train INFO: Epoch[118] Iteration[120/183] Loss: 0.040, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:19,977 reid_baseline.train INFO: Epoch[118] Iteration[140/183] Loss: 0.037, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:23,557 reid_baseline.train INFO: Epoch[118] Iteration[160/183] Loss: 0.033, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:27,098 reid_baseline.train INFO: Epoch[118] Iteration[180/183] Loss: 0.030, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:27,774 reid_baseline.train INFO: Epoch 118 done. Time per batch: 32.270[s] Speed: 362.9[samples/s]
+2022-04-22 15:07:27,774 reid_baseline.train INFO: ----------
+2022-04-22 15:07:31,936 reid_baseline.train INFO: Epoch[119] Iteration[20/183] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:35,490 reid_baseline.train INFO: Epoch[119] Iteration[40/183] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:39,042 reid_baseline.train INFO: Epoch[119] Iteration[60/183] Loss: 0.047, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:42,586 reid_baseline.train INFO: Epoch[119] Iteration[80/183] Loss: 0.046, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:46,173 reid_baseline.train INFO: Epoch[119] Iteration[100/183] Loss: 0.042, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:49,759 reid_baseline.train INFO: Epoch[119] Iteration[120/183] Loss: 0.041, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:53,320 reid_baseline.train INFO: Epoch[119] Iteration[140/183] Loss: 0.038, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:07:56,915 reid_baseline.train INFO: Epoch[119] Iteration[160/183] Loss: 0.034, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:08:00,455 reid_baseline.train INFO: Epoch[119] Iteration[180/183] Loss: 0.030, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:08:01,099 reid_baseline.train INFO: Epoch 119 done. Time per batch: 32.281[s] Speed: 362.8[samples/s]
+2022-04-22 15:08:01,100 reid_baseline.train INFO: ----------
+2022-04-22 15:08:05,323 reid_baseline.train INFO: Epoch[120] Iteration[20/184] Loss: 0.048, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:08:08,946 reid_baseline.train INFO: Epoch[120] Iteration[40/184] Loss: 0.050, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:08:12,532 reid_baseline.train INFO: Epoch[120] Iteration[60/184] Loss: 0.052, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:08:16,135 reid_baseline.train INFO: Epoch[120] Iteration[80/184] Loss: 0.049, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:08:19,760 reid_baseline.train INFO: Epoch[120] Iteration[100/184] Loss: 0.044, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:08:23,374 reid_baseline.train INFO: Epoch[120] Iteration[120/184] Loss: 0.043, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:08:26,953 reid_baseline.train INFO: Epoch[120] Iteration[140/184] Loss: 0.039, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:08:30,536 reid_baseline.train INFO: Epoch[120] Iteration[160/184] Loss: 0.036, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:08:34,086 reid_baseline.train INFO: Epoch[120] Iteration[180/184] Loss: 0.031, Acc: 1.000, Base Lr: 3.50e-06
+2022-04-22 15:08:35,510 reid_baseline.train INFO: Epoch 120 done. Time per batch: 32.651[s] Speed: 360.7[samples/s]
+2022-04-22 15:08:35,510 reid_baseline.train INFO: ----------
+2022-04-22 15:11:51,002 reid_baseline.train INFO: Validation Results - Epoch: 120
+2022-04-22 15:11:51,002 reid_baseline.train INFO: mAP: 73.1%
+2022-04-22 15:11:51,002 reid_baseline.train INFO: CMC curve, Rank-1  :87.1%
+2022-04-22 15:11:51,002 reid_baseline.train INFO: CMC curve, Rank-5  :95.5%
+2022-04-22 15:11:51,002 reid_baseline.train INFO: CMC curve, Rank-10 :97.3%
