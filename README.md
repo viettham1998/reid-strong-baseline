@@ -3,12 +3,6 @@
 - Nhóm sử dụng source code của tác giả, tiến hành chạy thử nghiệm, train lại và đánh giá, so sánh giữa các phương pháp với nhau
 - Thông tin chi tiết [source code gốc](https://github.com/michuanhaohao/reid-strong-baseline)
 
-## Quá trình train và so sánh
-- [] support more datasets
-- [] support more models
-- [] explore more tricks
-
-
 ## Quá trình train
 
 1. `cd` di chuyển đến thư mục cần chạy
@@ -25,7 +19,7 @@
 
     Nhóm tiến hành sử dụng 02 bộ dataset được Download từ 02 nguồn sau:
 
-    （1）[Market1501]()
+    （1）[Market1501](http://zheng-lab.cecs.anu.edu.au/Project/project_reid.html)
 
     * Giải nén và đổi tên thư mục giải nén thành `market1501`. Cấu trúc của thư mục sẽ là:
 
@@ -50,13 +44,16 @@
     ```
 
 5. Thay thế đường dẫn đến thư mục Pretrain tương ứng
+
     Tại các file: 
     - configs/baseline.yml
     - configs/softmax.yml
     - configs/softmax_triplet.yml
     - configs/softmax_triplet_with_center.yml
+	
     Thay thế Pretrain_Path trỏ đến đúng file tương ứng, ở đây, trong đồ án này, nhóm sử dụng file `resnet50-19c8e357.pth`
-    Thay thế OUTPUT_DIR thành thư mục chứa dữ liệu sau khi train
+    
+	Thay thế OUTPUT_DIR thành thư mục chứa dữ liệu sau khi train
 
 ## Quá trình Train
 Chạy trong terminal
@@ -82,4 +79,4 @@ python tools/test.py --config_file=D:/hvtham/jupyter/reid-strong-baseline/config
 ```
 Đối với việc so sánh giữa kết hợp cross entropy loss + triplet loss hay chỉ mình cross entropy loss thì các bước chạy vẫn như trên, chỉ thay đổi đường dẫn --config_file đến file yml tương ứng.
 
-Trên github này cũng có chứa những [file log](https://github.com/viettham1998/reid-strong-baseline/logs) mà nhóm đã chạy.
+Trên github này cũng có chứa những [file log](https://github.com/viettham1998/reid-strong-baseline/tree/main/logs) mà nhóm đã chạy.
